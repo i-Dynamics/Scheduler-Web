@@ -1,0 +1,17 @@
+.SchedulerPanel {
+    height: 100%;
+}
+
+.SchedulerPanel .row,
+.SchedulerPanel .column,
+.SchedulerPanel .columns {
+    height: 100%;
+}
+
+.SchedulerPanel .side-panel {
+    height: 50%;
+}
+
+#resource-panel {
+    background-color: #F1F1F1;
+}

@@ -1,0 +1,15 @@
+<div class="LoginPanel" v-el:panel>
+
+    <form class="login-panel-form login-form" @submit.stop.prevent="login">
+        <img class="u-full-width" src="/images/a2zcloud.png" v-el:logo>
+
+        <input class="u-full-width" type="text" placeholder="username" name="username" v-model="username" />
+
+        <input class="u-full-width" type="password" name="password" placeholder="password" v-model="password" />
+
+        <button class="button button-primary u-full-width" type="submit">Sign In</button>
+    </form>
+
+    <div class="error" v-if="error_message"> {{error_message}} </div>
+
+</div>

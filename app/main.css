@@ -1,0 +1,467 @@
+/* ---- Colours ---- */
+/* Primary
+   #D25858 // Red
+*/
+
+/* Secondary
+   #E8ABAB // Light Red
+*/
+
+/* Highlight
+   #B02727 // Dark Red
+*/
+
+/* Ambient
+   #F1F1F1 // Grey
+*/
+
+
+/* ---- Font Imports ---- */
+/*@import url(http://fonts.googleapis.com/css?family=Arimo);
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,300);*/
+ 
+/* ---- General CSS ---- */
+
+h1,h2,h3,h4 {
+    font-family: 'Arimo', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 18px;
+    display: inline-block;
+}
+
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 100;
+}
+
+button.button-primary, a.button-primary, .button.button-primary, input[type="submit"].button-primary {
+    border-radius: 0;
+    background-color: #D25858;
+    border-color: #D25858;
+
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+button.button-primary:hover, a.button-primary:hover, .button.button-primary:hover, input[type="submit"].button-primary:hover,
+button.button-primary:focus, a.button-primary:focus, .button.button-primary:focus, input[type="submit"].button-primary:focus {
+    background-color: #B02727;
+    border-color: #B02727;
+}
+
+button.button-primary:disabled, a.button-primary:disabled, .button.button-primary:disabled, input[type="submit"].button-primary:disabled {
+    background-color: #E8ABAB;
+    border-color: #E8ABAB;
+}
+
+button.button-primary:active, a.button-primary:active, .button.button-primary:active, input[type="submit"].button-primary:active {
+    -webkit-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+    box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+}
+
+input[type="email"], input[type="number"], input[type="search"],
+input[type="text"], input[type="tel"], input[type="url"],
+input[type="password"], textarea, select {
+    border: none;
+    border-bottom: 1px solid #D1D1D1;
+
+    max-width: 100%;
+    border-radius: 0;
+}
+
+input[type="email"]:hover, input[type="number"]:hover, input[type="search"]:hover,
+input[type="text"]:hover, input[type="tel"]:hover, input[type="url"]:hover,
+input[type="password"]:hover, textarea:hover, select:hover,
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus,
+input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus,
+input[type="password"]:focus, textarea:focus, select:focus {
+    border: none;
+    border-bottom: 1px solid #D25858;
+}
+
+#Scheduler .required::after {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    content:"\f069";
+    font-family: "FontAwesome";
+    color: #D25858;
+}
+
+#Scheduler
+.scroll-container {
+    overflow: auto !important;
+}
+
+#Scheduler
+.logo-icon {
+    display: inline-block;
+    width: 22px;
+    height: 12px;
+}
+
+#Scheduler
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#Scheduler
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#Scheduler
+.drop-down {
+    position: absolute;
+
+    top: 0;
+    width: 100%;
+    height: 0;
+
+    overflow: hidden;
+
+    padding: 0;
+}
+
+#Scheduler
+.main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#Scheduler
+.list-header {
+    background-color: #D25858;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+
+    padding: 8px 16px;
+    margin-bottom: 0;
+    z-index: 100;
+}
+
+#Scheduler
+.list-body {
+    position: absolute;
+    margin-bottom: 0px;
+    height: 100%;
+}
+
+#Scheduler
+.list-body
+ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+    height: 100%;
+    overflow: auto;
+}
+
+#Scheduler
+.list-body
+ul li {
+    border-bottom: 1px solid #F1F1F1;
+    background-color: white;
+    padding: 8px 16px;
+    margin: 0;
+}
+
+#Scheduler
+.list-body
+ul li:hover {
+    background-color: #FFF3F2;
+}
+
+#Scheduler
+.list-body
+ul li span {
+    font-size: 16px;
+
+    /* Should be (font size / 2) - 1 for vertical alignment */
+    margin-bottom: -7px;
+}
+
+
+#Scheduler
+.list-body
+.list-item-text {
+    display: inline-block;
+
+    max-width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#Scheduler
+.shade {
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: black;
+
+    /* to be overridden by transition */
+    opacity: 0;
+}
+
+
+/* ---- Loading Animation ---- */
+/* Source: http://tobiasahlin.com/spinkit */
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #D25858;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+          animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  }
+}
+
+
+/* ---- Media Queries ---- */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    .container {
+        width: 100%;
+    }
+
+    .columns, .column {
+        margin: 0px;
+    }
+
+    .three.columns {
+        width: 26%;
+    }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+}
+
+/** ie10mobile.css **/
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+/* ---- CSS Transformations ---- */
+.transition-base {
+    -webkit-transition: 0.3s;
+       -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+         -o-transition: 0.3s;
+            transition: 0.3s;
+}
+
+.transition-45-right {
+    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(-45deg); /* IE 9 */
+            transform: rotate(-45deg);
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-45-right-undo {
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(0deg); /* IE 9 */
+            transform: rotate(0deg);
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-quick-fade-in {
+    opacity: 1 !important;
+
+    -webkit-transition: 0.15s; /* Safari */
+            transition: 0.15s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-quick-fade-out {
+    opacity: 0 !important;
+
+    -webkit-transition: 0.15s; /* Safari */
+            transition: 0.15s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-fade-in {
+    opacity: 1 !important;
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-fade-out {
+    opacity: 0 !important;
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-full-height {
+    height: 100% !important;
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-zero-height {
+    height: 0 !important;
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.transition-translucent-30 {
+    opacity: 0.3 !important;
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+/* ---- CSS Animations ---- */
+.item-hint {
+    -webkit-animation: item-hint 3s ease forwards;
+         -o-animation: item-hint 3s ease forwards;
+            animation: item-hint 3s ease forwards;
+}
+
+@keyframes item-hint {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: #FFF3F2;
+    }
+    100% {
+        background-color: white;
+    }
+}

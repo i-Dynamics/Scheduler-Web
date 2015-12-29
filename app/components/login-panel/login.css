@@ -1,0 +1,55 @@
+.LoginPanel {
+    width: 100%;
+    min-height: 100%;
+
+    padding-bottom: 30px;
+    box-sizing: border-box;
+
+    background: #F1F1F1;
+}
+
+.LoginPanel
+.login-form {
+    width: 300px;
+    margin: auto;
+}
+
+.LoginPanel
+.login-header {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    background: #D25858;
+
+    font-weight: 100;
+    color: white;
+}
+
+.LoginPanel
+.form-fields {
+    padding: 15px;
+    box-sizing: border-box;
+
+    background: #fff;
+}
+
+.LoginPanel
+.form-fields 
+#login {
+    margin-top: 20px;
+}
+
+.LoginPanel
+.error-container {
+    width: 80%;
+    margin: auto;
+
+    margin-top: 30px;
+    padding: 15px;
+    box-sizing: border-box;
+
+    background-color: #E8ABAB;
+    border: 1px solid #D25858;
+    color: #B02727;
+}

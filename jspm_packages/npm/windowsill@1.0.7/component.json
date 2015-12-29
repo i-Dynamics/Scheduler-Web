@@ -1,0 +1,31 @@
+{
+  "name": "windowsill",
+  "version": "1.0.7",
+  "repository": "ayamflow/windowsill",
+  "description": "Abstract, debounced windows events.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "beefy test/index.js:test/tests.js --debug=false"
+  },
+  "keywords": [
+    "events",
+    "dom",
+    "window",
+    "resize",
+    "scroll"
+  ],
+  "author": "= <=>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayamflow/windowsill/issues"
+  },
+  "dependencies": {
+    "scottcorgan/tiny-emitter": "*",
+    "component/debounce": "*"
+  },
+  "devDependencies": {
+    "substack/tape": "~3.0.1"
+  },
+  "scripts": ["src/index.js", "src/events.js"],
+  "license": "MIT"
+}

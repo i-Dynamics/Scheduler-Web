@@ -190,5 +190,24 @@
   "npm:Base64@0.2.1": {},
   "npm:punycode@1.3.2": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "github:dhg/Skeleton@2.0.4": {
+    "css": "jspm:css@0.1",
+    "normalize.css": "jspm:normalize.css@3.0.3"
+  },
+  "github:necolas/normalize.css@3.0.3": {
+    "css": "jspm:css"
+  },
+  "npm:vue-resize-mixin@1.0.1": {
+    "windowsill": "npm:windowsill@~1.0.6"
+  },
+  "npm:windowsill@1.0.7": {
+    "tiny-emitter": "npm:tiny-emitter@~1.0.0",
+    "debounce": "npm:debounce@~1.0.0"
+  },
+  "npm:debounce@1.0.0": {
+    "date-now": "npm:date-now@1.0.1"
+  },
+  "npm:tiny-emitter@1.0.2": {},
+  "npm:date-now@1.0.1": {}
 }

@@ -1,0 +1,68 @@
+.EventsPanel {
+    position: relative;
+    background-color: #F1F1F1;
+    height: 100%;
+}
+
+.EventsPanel
+.action-bar {
+    cursor: default;
+}
+
+.EventsPanel
+.action-bar-button {
+    color: white; /*#E8ABAB;*/
+    cursor: pointer;
+
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.EventsPanel
+.action-bar-button:hover {
+    color: #B02727;
+}
+
+.EventsPanel
+.event-item {
+    font-size: 16px;
+    cursor: pointer;
+
+    border-color: #F1F1F1;
+    background-color: white;
+}
+
+.EventsPanel
+.event-item:hover {
+    background-color: #FFF3F2;
+}
+
+.EventsPanel .info-button,
+.EventsPanel .edit-button {
+    font-size: 16px;
+    color: #D25858;
+
+    cursor: pointer;
+
+    border-radius: 16px;
+    line-height: 20px;
+
+    margin-top: 3px;
+}
+
+.EventsPanel .info-button:hover,
+.EventsPanel .edit-button:hover {
+    color: white;
+    background-color: #D25858; /*#6a3535;*/
+}
+
+.EventsPanel
+.edit-button {
+    margin-right: 5px;
+
+    padding: 0px 2px;
+    font-size: 14px;
+}

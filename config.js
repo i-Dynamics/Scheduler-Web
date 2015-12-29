@@ -19,10 +19,16 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "skeleton": "github:dhg/Skeleton@2.0.4",
     "skeleton-css": "npm:skeleton-css@2.0.4",
     "text": "github:systemjs/plugin-text@0.0.3",
     "vue": "npm:vue@1.0.10",
+    "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.7",
+    "github:dhg/Skeleton@2.0.4": {
+      "css": "github:systemjs/plugin-css@0.1.20",
+      "normalize.css": "github:necolas/normalize.css@3.0.3"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -60,6 +66,9 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:necolas/normalize.css@3.0.3": {
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -110,6 +119,9 @@ System.config({
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:debounce@1.0.0": {
+      "date-now": "npm:date-now@1.0.1"
     },
     "npm:envify@3.4.0": {
       "jstransform": "npm:jstransform@10.1.0",
@@ -194,9 +206,16 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:vue-resize-mixin@1.0.1": {
+      "windowsill": "npm:windowsill@1.0.7"
+    },
     "npm:vue@1.0.10": {
       "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:windowsill@1.0.7": {
+      "debounce": "npm:debounce@1.0.0",
+      "tiny-emitter": "npm:tiny-emitter@1.0.2"
     }
   }
 });
