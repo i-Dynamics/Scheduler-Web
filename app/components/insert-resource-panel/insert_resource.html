@@ -1,0 +1,20 @@
+<!-- TemplateName -->
+<div class="InsertResourcePanel">
+    <!-- Content -->
+    <form class="main-form">
+        <div id="insert-resource-panel-name-required" class="required">
+            <input
+                id="insert-resource-panel-name"
+                class="u-full-width"
+                type="text"
+                placeholder="name"
+                v-model="resource.name">
+        </div>
+        <input
+                id="insert-resource-submit"
+                class="button-primary u-full-width"
+                type="submit"
+                value="Create"
+                @click="insert_resource(resource)">
+    </form>
+</div>

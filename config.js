@@ -20,6 +20,8 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "fullcalendar": "npm:fullcalendar@2.5.0",
+    "jquery": "github:components/jquery@2.1.4",
+    "jquery-ui": "npm:jquery-ui@1.10.5",
     "moment": "npm:moment@2.10.6",
     "skeleton": "github:dhg/Skeleton@2.0.4",
     "skeleton-css": "npm:skeleton-css@2.0.4",
@@ -150,6 +152,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:jquery-ui@1.10.5": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:jquery@2.1.4": {
       "process": "github:jspm/nodelibs-process@0.1.2"

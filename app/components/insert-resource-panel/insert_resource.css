@@ -1,0 +1,11 @@
+
+.InsertResourcePanel {
+    background-color: white;
+    min-height: 100%;
+}
+
+.InsertResourcePanel
+.main-form {
+    padding: 8px 16px;
+    margin-bottom: 0px;
+}

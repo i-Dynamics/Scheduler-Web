@@ -138,6 +138,12 @@ export default class Connection {
         })
     }
 
+    insert_resource(resource, error_back) {
+        this.send('insert_resource', resource, (request, response) => {
+            if(error_back) error_back(response.error)
+        })
+    }
+
     get_bookings(calendar, error_back) {
         this.send('get_bookings', { calendar_id: calendar.id }, (request, response) => {
             if(response.error) {

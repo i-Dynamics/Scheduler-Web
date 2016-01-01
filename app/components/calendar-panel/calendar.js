@@ -4,6 +4,8 @@ import tmpl from './calendar.html!text'
 
 import Vue from 'vue'
 import moment from 'moment'
+import $ from 'jquery'
+import jQueryUI from 'jquery-ui'
 import fullCalendar from 'fullcalendar'
 
 

@@ -1,68 +1,101 @@
-.ResourcesPanel {
-    position: relative;
-    background-color: #F1F1F1;
+
+.CalendarPanel {
     height: 100%;
 }
 
-.ResourcesPanel
-.action-bar {
-    cursor: default;
+.CalendarPanel
+.title-caret {
+    padding: 5px;
 }
 
-.ResourcesPanel
-.action-bar-button {
-    color: white; /*#E8ABAB;*/
-    cursor: pointer;
+.CalendarPanel
+.calendar-header {
+    background-color: #D25858;
+    color: white;
 
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+    border-right: 1px solid #B02727;
 }
 
-.ResourcesPanel
-.action-bar-button:hover {
+.CalendarPanel
+.calendar-header i:hover {
     color: #B02727;
 }
 
-.ResourcesPanel
-.resource-item {
-    font-size: 16px;
-    cursor: pointer;
-
-    border-color: #F1F1F1;
-    background-color: white;
+.CalendarPanel
+.calendar-header .selected-view {
+    color: #B02727;
 }
 
-.ResourcesPanel
-.resource-item:hover {
+.CalendarPanel
+.calendar-title {
+    text-align: center;
+    min-width: 200px;
+}
+
+.CalendarPanel
+.view-options {
+    padding-right: 20px;
+}
+
+.CalendarPanel
+.view-options .fa-align-justify {
+            transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+}
+
+.CalendarPanel
+#calendar table {
+    margin-bottom: 0;
+}
+
+.CalendarPanel
+thead {
+    border-color: #F1F1F1;
+}
+
+.CalendarPanel
+th {
+    font-weight: inherit;
+}
+
+
+/* Full Calendar styling */
+.CalendarPanel
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-popover,
+.fc-unthemed .fc-row,
+.fc-unthemed tbody,
+.fc-unthemed td,
+.fc-unthemed th,
+.fc-unthemed thead {
+    border-color: #F1F1F1;
+}
+
+.CalendarPanel
+.fc-today {
     background-color: #FFF3F2;
 }
 
-.ResourcesPanel .info-button,
-.ResourcesPanel .edit-button {
-    font-size: 16px;
+.CalendarPanel
+.fc-month-view .fc-title-today {
+    color: inherit;
+    font-weight: inherit;
+}
+
+.CalendarPanel
+.fc-agendaDay-view .fc-today {
+    background-color: transparent;
+}
+
+.CalendarPanel
+.fc-title-today {
     color: #D25858;
-
-    cursor: pointer;
-
-    border-radius: 16px;
-    line-height: 20px;
-
-    margin-top: 3px;
+    font-weight: 400;
 }
 
-.ResourcesPanel .info-button:hover,
-.ResourcesPanel .edit-button:hover {
-    color: white;
-    background-color: #D25858; /*#6a3535;*/
-}
-
-.ResourcesPanel
-.edit-button {
-    margin-right: 5px;
-
-    padding: 0px 2px;
-    font-size: 14px;
+.CalendarPanel
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-popover .fc-header {
+    background-color: #F1F1F1;
 }

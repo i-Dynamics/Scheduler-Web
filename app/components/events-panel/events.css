@@ -35,6 +35,15 @@
     background-color: white;
 }
 
+.EventsPanel .event-button {
+    display: none;
+}
+
+.EventsPanel
+.event-item:hover .event-button {
+    display: block;
+}
+
 .EventsPanel
 .event-item:hover {
     background-color: #FFF3F2;

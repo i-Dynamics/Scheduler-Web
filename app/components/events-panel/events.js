@@ -29,6 +29,9 @@ export default Vue.extend({
         },
         handle_insert_completion() {
             this.child_view = null
+        },
+        test() {
+            console.log("hello")
         }
     },
     computed: {
@@ -38,18 +41,18 @@ export default Vue.extend({
     },
     events: {
         insert_event(event) {
-            if (this.calendar.id != event.calendar.id) return
-            this.calendar.events.push(event)
+            let calendar = this.$root.store.user.calendars.find(c => c.id == event.calendar.id)
+            calendar.events.push(event)
         },
         update_event(event) {
-            if (this.calendar.id != event.calendar.id) return
-            let index = this.calendar.events.findIndex(e => e.id == event.id)
-            this.calendar.events.$set(index, event)
+            let calendar = this.$root.store.user.calendars.find(c => c.id == event.calendar.id)
+            let index    = calendar.events.findIndex(e => e.id == event.id)
+            calendar.events.$set(index, event)
         },
         delete_event(id) {
-            if (this.calendar.id != event.calendar.id) return
-            let index = this.calendar.events.findIndex(e => e.id == id)
-            this.calendar.events.splice(index, 1)
+            let calendar = this.$root.store.user.calendars.find(c => c.id == event.calendar.id)
+            var index    = calendar.events.findIndex(e => e.id == id)
+            calendar.events.splice(index, 1)
         }
     }
 })
