@@ -1,0 +1,68 @@
+.ResourcesPanel {
+    position: relative;
+    background-color: #F1F1F1;
+    height: 100%;
+}
+
+.ResourcesPanel
+.action-bar {
+    cursor: default;
+}
+
+.ResourcesPanel
+.action-bar-button {
+    color: white; /*#E8ABAB;*/
+    cursor: pointer;
+
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.ResourcesPanel
+.action-bar-button:hover {
+    color: #B02727;
+}
+
+.ResourcesPanel
+.resource-item {
+    font-size: 16px;
+    cursor: pointer;
+
+    border-color: #F1F1F1;
+    background-color: white;
+}
+
+.ResourcesPanel
+.resource-item:hover {
+    background-color: #FFF3F2;
+}
+
+.ResourcesPanel .info-button,
+.ResourcesPanel .edit-button {
+    font-size: 16px;
+    color: #D25858;
+
+    cursor: pointer;
+
+    border-radius: 16px;
+    line-height: 20px;
+
+    margin-top: 3px;
+}
+
+.ResourcesPanel .info-button:hover,
+.ResourcesPanel .edit-button:hover {
+    color: white;
+    background-color: #D25858; /*#6a3535;*/
+}
+
+.ResourcesPanel
+.edit-button {
+    margin-right: 5px;
+
+    padding: 0px 2px;
+    font-size: 14px;
+}

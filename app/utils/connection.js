@@ -112,35 +112,38 @@ export default class Connection {
         })
     }
 
-    get_events(calendar_id, error_back) {
-        this.send('get_events', { calendar_id: calendar_id }, (request, response) => {
+    get_events(calendar, error_back) {
+        this.send('get_events', { calendar_id: calendar.id }, (request, response) => {
             if(response.error) {
                 if(error_back) error_back(response.error)
                 return
             }
-            var calendar    = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
             calendar.events = response.result
         })
     }
 
-    get_resources(calendar_id, error_back) {
-        this.send('get_resources', { calendar_id: calendar_id }, (request, response) => {
+    insert_event(event, error_back) {
+        this.send('insert_event', event, (request, response) => {
+            if(error_back) error_back(response.error)
+        })
+    }
+
+    get_resources(calendar, error_back) {
+        this.send('get_resources', { calendar_id: calendar.id }, (request, response) => {
             if(response.error) {
                 if(error_back) error_back(response.error)
                 return
             }
-            var calendar       = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
             calendar.resources = response.result
         })
     }
 
-    get_bookings(calendar_id, error_back) {
-        this.send('get_bookings', { calendar_id: calendar_id }, (request, response) => {
+    get_bookings(calendar, error_back) {
+        this.send('get_bookings', { calendar_id: calendar.id }, (request, response) => {
             if(response.error) {
                 if(error_back) error_back(response.error)
                 return
             }
-            var calendar      = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
             calendar.bookings = response.result
         })
     }

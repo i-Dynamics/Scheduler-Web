@@ -1,0 +1,25 @@
+<!-- TemplateName -->
+<div class="InsertEventPanel">
+    <!-- Content -->
+    <form class="main-form">
+        <div id="insert-event-panel-name-required" class="required">
+            <input
+                id="insert-event-panel-name"
+                class="u-full-width"
+                type="text"
+                placeholder="name"
+                v-model="event.name">
+        </div>
+        <textarea
+                id="insert-event-panel-note"
+                class="u-full-width"
+                placeholder="notes"
+                v-model="event.notes"></textarea>
+        <input
+                id="insert-event-submit"
+                class="button-primary u-full-width"
+                type="submit"
+                value="Create"
+                @click="insert_event(event)">
+    </form>
+</div>

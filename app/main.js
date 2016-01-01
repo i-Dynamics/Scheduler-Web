@@ -27,10 +27,6 @@ router.map({
     '/calendar/:calendar_id': {
         name: 'calendar',
         component: SchedulerPanel
-    },
-    '/sign-in': {
-        name: 'login',
-        component: LoginPanel
     }
 })
 
@@ -53,9 +49,7 @@ router.start({
         var app = window.app = this
     },
     watch: {
-        'store.user'(user) {
-            if (user) this.control.get_calendars()
-        }
+
     },
     methods: {
         window_size() {
@@ -68,6 +62,22 @@ router.start({
         resize(size) {
             this.$broadcast('resize', size)
         }
+        // update_user(user) {
+        //     calendar.user = user
+        // },
+        // insert_invite(invite) {
+        //     store.user.invites.push(invite)
+        // },
+        // update_invite(invite) {
+        //     let index = store.user.invites.findIndex(i => i.id == invite.id)
+        //     store.user.invites.$set(index, invite)
+        // },
+        // delete_invite(id) {
+        //     var index = store.user.invites.findIndex(i => i.id == id)
+        //     calendar.invites.splice(index, 1)
+        // }
     },
-    components: {}
+    components: {
+        'login-panel': LoginPanel
+    }
 }, 'body')

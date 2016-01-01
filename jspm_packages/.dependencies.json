@@ -81,10 +81,6 @@
     "process": "github:jspm/nodelibs-process@^0.1.0"
   },
   "npm:base62@0.1.1": {},
-  "npm:vue@1.0.10": {
-    "envify": "npm:envify@^3.4.0",
-    "process": "github:jspm/nodelibs-process@^0.1.0"
-  },
   "npm:process@0.11.2": {
     "assert": "github:jspm/nodelibs-assert@^0.1.0"
   },
@@ -104,15 +100,6 @@
     "assert": "npm:assert@^1.3.0"
   },
   "npm:babel-core@5.8.34": {},
-  "npm:is-array@1.0.1": {},
-  "npm:buffer@3.5.3": {
-    "base64-js": "npm:base64-js@0.0.8",
-    "ieee754": "npm:ieee754@^1.1.4",
-    "is-array": "npm:is-array@^1.0.1",
-    "fs": "github:jspm/nodelibs-fs@^0.1.0",
-    "child_process": "github:jspm/nodelibs-child_process@^0.1.0",
-    "process": "github:jspm/nodelibs-process@^0.1.0"
-  },
   "npm:stream-browserify@1.0.0": {
     "inherits": "npm:inherits@~2.0.1",
     "readable-stream": "npm:readable-stream@^1.0.27-1",
@@ -220,5 +207,18 @@
   },
   "npm:moment@2.10.6": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "npm:vue@1.0.13": {
+    "envify": "npm:envify@^3.4.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:buffer@3.6.0": {
+    "base64-js": "npm:base64-js@0.0.8",
+    "ieee754": "npm:ieee754@^1.1.4",
+    "isarray": "npm:isarray@^1.0.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "child_process": "github:jspm/nodelibs-child_process@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:isarray@1.0.0": {}
 }

@@ -20,12 +20,11 @@
             <i class="fa fa-fw fa-th-large cursor-pointer transition-base"></i>
             <i class="fa fa-fw fa-square cursor-pointer transition-base"></i>
         </span>
-
-        <ul>
-            <li v-for="booking in grouped_bookings">
-                {{booking | json 4}}
-            </li>
-        </ul>
     </div>
     <div id="calendar" v-el:calendar></div>
+    <ul>
+        <li v-for="booking in grouped_bookings">
+            {{booking | json 4}}
+        </li>
+    </ul>
 </div>

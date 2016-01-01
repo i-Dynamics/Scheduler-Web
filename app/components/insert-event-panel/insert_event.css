@@ -1,0 +1,11 @@
+
+.InsertEventPanel {
+    background-color: white;
+    min-height: 100%;
+}
+
+.InsertEventPanel
+.main-form {
+    padding: 8px 16px;
+    margin-bottom: 0px;
+}

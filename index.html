@@ -41,8 +41,9 @@
         </div>
 
         <!-- Scheduler App -->
-        <div id="scheduler" class="scheduler" :class="{ disconnected: !control._connected }" v-cloak>
-            <router-view :user="store.user"></router-view>
+        <div id="Scheduler" class="Scheduler" :class="{ disconnected: !control._connected }" v-cloak>
+            <login-panel v-if="!store.user"></login-panel>
+            <router-view v-else :calendars="store.user.calendars"></router-view>
         </div>
 
         <!-- include system to load packages, parse config and import the app entry point -->

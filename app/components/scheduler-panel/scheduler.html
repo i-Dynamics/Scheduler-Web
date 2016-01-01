@@ -1,10 +1,10 @@
 <div class="SchedulerPanel container u-max-full-width">
-    <div class="row" v-if="user && user.calendars">
+    <div class="row">
 
         <!-- Calendar Panel -->
         <div class="nine columns">
             <div id="calendar-panel">
-                <calendar-panel :calendar="selected_calendar"></calendar-panel>
+                <calendar-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></calendar-panel>
             </div>
         </div>
 
@@ -12,13 +12,13 @@
         <div class="three columns">
         
             <!-- Events Panel -->
-            <div id="events-panel" class="side-panel">
-                <events-panel :calendar="selected_calendar"></events-panel>
+            <div id="events-panel" class="side-panel" v-el:events-panel>
+                <events-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></events-panel>
             </div>
             
             <!-- Resource Panel -->
-            <div id="resource-panel" class="side-panel">
-                <resources-panel :calendar="selected_calendar"></resources-panel>
+            <div id="resource-panel" class="side-panel" v-el:resources-panel>
+                <resources-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></resources-panel>
             </div>
 
         </div>

@@ -35,12 +35,8 @@ export default Vue.extend({
         }
     },
     computed: {
-        display_events() {
-            return this.calendar.events
-        }
     },
-    watch: {
-
+    watch: {  
     },
     events: {
         resize: 'resize'
