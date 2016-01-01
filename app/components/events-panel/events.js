@@ -19,7 +19,7 @@ export default Vue.extend({
         }
     },
     ready() {
-        // this.events = this.$root.control.get_events(this.calendar.id)
+        this.$root.control.get_events(this.calendar.id)
     },
     methods: {
 

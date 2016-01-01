@@ -81,19 +81,19 @@ export default class Connection {
         this._pending_request = [];
     }
 
-    login(username, password, err_back){
+    login(username, password, error_back){
         this.send("login",{ username:username, password:password },(request,response)=>{
-            if(response.error && err_back){
-                err_back(response.error);
+            if(response.error && error_back){
+                error_back(response.error);
             }
         });
     }
 
-    logout(err_back){
+    logout(error_back){
         this.send("logout",{},(request,response)=>{
             if(response.error){
-                if(err_back){
-                    err_back(response.error);
+                if(error_back){
+                    error_back(response.error);
                 }
                 return;
             }
@@ -102,4 +102,46 @@ export default class Connection {
         });
     }
 
+    get_calendars(error_back) {
+        this.send('get_calendars', {}, (request, response) => {
+            if(response.error) {
+                if(error_back) error_back(response.error)
+                return
+            }
+            this._app.store.user.calendars = response.result
+        })
+    }
+
+    get_events(calendar_id, error_back) {
+        this.send('get_events', { calendar_id: calendar_id }, (request, response) => {
+            if(response.error) {
+                if(error_back) error_back(response.error)
+                return
+            }
+            var calendar    = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
+            calendar.events = response.result
+        })
+    }
+
+    get_resources(calendar_id, error_back) {
+        this.send('get_resources', { calendar_id: calendar_id }, (request, response) => {
+            if(response.error) {
+                if(error_back) error_back(response.error)
+                return
+            }
+            var calendar       = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
+            calendar.resources = response.result
+        })
+    }
+
+    get_bookings(calendar_id, error_back) {
+        this.send('get_bookings', { calendar_id: calendar_id }, (request, response) => {
+            if(response.error) {
+                if(error_back) error_back(response.error)
+                return
+            }
+            var calendar      = this._app.store.user.calendars.find(cal => cal.id == calendar_id)
+            calendar.bookings = response.result
+        })
+    }
 }

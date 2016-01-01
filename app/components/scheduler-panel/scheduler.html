@@ -1,10 +1,10 @@
 <div class="SchedulerPanel container u-max-full-width">
-    <div class="row" v-if="calendar">
+    <div class="row" v-if="user && user.calendars">
 
         <!-- Calendar Panel -->
         <div class="nine columns">
             <div id="calendar-panel">
-                
+                <calendar-panel :calendar="selected_calendar"></calendar-panel>
             </div>
         </div>
 
@@ -13,16 +13,12 @@
         
             <!-- Events Panel -->
             <div id="events-panel" class="side-panel">
-                <events-panel :calendar="calendar"></events-panel>
+                <events-panel :calendar="selected_calendar"></events-panel>
             </div>
             
             <!-- Resource Panel -->
             <div id="resource-panel" class="side-panel">
-                <div class="list-header u-full-width">
-                    <span id="resource-panel-title" >
-                        <h4>Resources</h4>
-                    </span>
-                </div>
+                <resources-panel :calendar="selected_calendar"></resources-panel>
             </div>
 
         </div>

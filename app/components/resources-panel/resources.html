@@ -1,0 +1,32 @@
+
+<div class="ResourcesPanel">
+
+    <div class="list-header u-full-width">
+        <span id="resource-panel-title">
+            <h4> {{ title }} </h4>
+        </span>
+        <span class="action-bar pull-right no-select">
+            <i id="resource-panel-search-button" class="action-bar-button fa fa-search fa-fw"></i>
+            <i id="resource-panel-filter-button" class="action-bar-button fa fa-filter fa-fw"></i>
+            <i id="resource-panel-sort-button" class="action-bar-button fa fa-sort-alpha-desc fa-fw"></i>
+            <i id="resource-panel-plus-button" class="action-bar-button fa fa-plus fa-fw"></i>
+        </span>
+    </div>
+    <div id="resources-panel-list" class="list-body u-full-width">
+        <ul>
+            <li v-for="resource in display_resources" class="resource-item no-select" draggable="true" >
+                <span class="list-item-text"> {{ resource.name }} </span>
+                <span class="info-button pull-right" >
+                    <i class="fa fa-info fa-fw"></i>
+                </span>
+                <span class="edit-button pull-right" >
+                    <i class="fa fa-pencil fa-fw"></i>
+                </span>
+            </li>
+        </ul>
+        
+        <!-- <div id="resources-shade" class="shade"></div>
+        <create-resource-panel class="drop-down"></create-resource-panel> -->
+    </div>
+
+</div>

@@ -2,26 +2,30 @@ import './scheduler.css!'
 
 import tmpl from './scheduler.html!text'
 
-import Vue         from 'vue'
-import EventsPanel from 'app/components/events-panel/events'
+import Vue            from 'vue'
+import CalendarPanel  from 'app/components/calendar-panel/calendar'
+import EventsPanel    from 'app/components/events-panel/events'
+import ResourcesPanel from 'app/components/resources-panel/resources'
 
 
 export default Vue.extend({
     template: tmpl,
     components: {
-        'events-panel': EventsPanel
+        'calendar-panel':  CalendarPanel,
+        'events-panel':    EventsPanel,
+        'resources-panel': ResourcesPanel
     },
+    props: [
+        'user'
+    ],
     data() {
-        return {
-            calendar: null // Should use router to get from url '#!/cal/a2zcloud'
-        }
+        return {}
     },
     ready() {
         
     },
     route: {
         activate(transition) {
-            // this.calendar = this.$root.control.get_calendar(this.$route.params.calendar_id);
             transition.next();
         }
     },
@@ -29,7 +33,10 @@ export default Vue.extend({
 
     },
     computed: {
-
+        selected_calendar() {
+            var url_id = this.$route.params.calendar_id
+            return this.user.calendars.find(cal => cal.id == url_id)
+        }
     },
     watch: {
 

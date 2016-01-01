@@ -52,6 +52,11 @@ router.start({
     ready() {
         var app = window.app = this
     },
+    watch: {
+        'store.user'(user) {
+            if (user) this.control.get_calendars()
+        }
+    },
     methods: {
         window_size() {
             return { height: window.innerHeight, width: window.innerWidth }
