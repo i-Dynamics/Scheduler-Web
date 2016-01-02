@@ -6,10 +6,25 @@
             <h4> {{ title }} </h4>
         </span>
         <span class="action-bar pull-right no-select">
-            <i id="resource-panel-search-button" class="action-bar-button fa fa-search fa-fw"></i>
-            <i id="resource-panel-filter-button" class="action-bar-button fa fa-filter fa-fw"></i>
-            <i id="resource-panel-sort-button" class="action-bar-button fa fa-sort-alpha-desc fa-fw"></i>
-            <i id="resource-panel-plus-button" class="action-bar-button fa fa-plus fa-fw" @click="toggle_insert()"></i>
+            <i  id="resource-panel-search-button" 
+                class="action-bar-button fa fa-search fa-fw" 
+                v-if="!display_insert" 
+                transition="fade"></i>
+                
+            <i  id="resource-panel-filter-button" 
+                class="action-bar-button fa fa-filter fa-fw" 
+                v-if="!display_insert" 
+                transition="fade"></i>
+
+            <i  id="resource-panel-sort-button" 
+                class="action-bar-button fa fa-sort-alpha-desc fa-fw" 
+                v-if="!display_insert" 
+                transition="fade"></i>
+
+            <i  id="resource-panel-plus-button" 
+                class="action-bar-button fa fa-plus fa-fw" 
+                @click="toggle_insert()" 
+                :class="{'rotate-45-enter': display_insert}"></i>
         </span>
     </div>
     <div id="resources-panel-list" class="list-body u-full-width">
@@ -25,11 +40,12 @@
             </li>
         </ul>
         
-        <div v-if="child_view">
-            <div id="resource-shade" class="shade"></div>
-            <div class="drop-down">
-                <component :is="child_view" :calendar="calendar" v-on:completed="handle_insert_completion"></component>
-            </div>
+
+        <div v-if="display_insert" transition="shade"></div>
+        <div v-if="display_insert" transition="drop-down">
+            <insert-resource-panel 
+                :calendar="calendar" 
+                v-on:completed="handle_insert_completion"></insert-resource-panel>
         </div>
     </div>
 

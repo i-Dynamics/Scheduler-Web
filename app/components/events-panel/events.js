@@ -17,7 +17,7 @@ export default Vue.extend({
     data() {
         return {
             title: 'Events',
-            child_view: null
+            display_insert: false
         }
     },
     ready() {
@@ -25,10 +25,10 @@ export default Vue.extend({
     },
     methods: {
         toggle_insert() { 
-            this.child_view = this.child_view ? null : 'insert-event-panel'
+            this.display_insert = !this.display_insert
         },
         handle_insert_completion() {
-            this.child_view = null
+            this.display_insert = false
         },
         test() {
             console.log("hello")

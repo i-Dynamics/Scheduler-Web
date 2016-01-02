@@ -124,19 +124,6 @@ input[type="password"]:focus, textarea:focus, select:focus {
 }
 
 #Scheduler
-.drop-down {
-    position: absolute;
-
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    padding: 0;
-}
-
-#Scheduler
 .main {
     position: absolute;
     height: 100%;
@@ -205,20 +192,6 @@ ul li span {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-}
-
-#Scheduler
-.shade {
-    position: absolute;
-    top: 0;
-
-    height: 100%;
-    width: 100%;
-
-    background-color: black;
-
-    /* to be overridden by transition */
-    opacity: 0;
 }
 
 
@@ -370,100 +343,6 @@ ul li span {
 }
 
 /* ---- CSS Transformations ---- */
-.transition-base {
-    -webkit-transition: 0.3s;
-       -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-         -o-transition: 0.3s;
-            transition: 0.3s;
-}
-
-.transition-45-right {
-    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
-        -ms-transform: rotate(-45deg); /* IE 9 */
-            transform: rotate(-45deg);
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-45-right-undo {
-    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
-        -ms-transform: rotate(0deg); /* IE 9 */
-            transform: rotate(0deg);
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-quick-fade-in {
-    opacity: 1 !important;
-
-    -webkit-transition: 0.15s; /* Safari */
-            transition: 0.15s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-quick-fade-out {
-    opacity: 0 !important;
-
-    -webkit-transition: 0.15s; /* Safari */
-            transition: 0.15s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-fade-in {
-    opacity: 1 !important;
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-fade-out {
-    opacity: 0 !important;
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-full-height {
-    height: 100% !important;
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-zero-height {
-    height: 0 !important;
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-.transition-translucent-30 {
-    opacity: 0.3 !important;
-
-    -webkit-transition: 0.3s; /* Safari */
-            transition: 0.3s;
-
-    transition-timing-function: ease-out;
-}
-
-/* ---- CSS Animations ---- */
 .item-hint {
     -webkit-animation: item-hint 3s ease forwards;
          -o-animation: item-hint 3s ease forwards;
@@ -480,4 +359,71 @@ ul li span {
     100% {
         background-color: white;
     }
+}
+
+.fade-transition {
+    transition: all .3s ease;
+    opacity: 1;
+}
+
+.fade-enter, .fade-leave {
+    opacity: 0;
+}
+
+.rotate-45-transition {
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(0deg); /* IE 9 */
+            transform: rotate(0deg);
+
+    -webkit-transition: 0.3s; /* Safari */
+            transition: 0.3s;
+
+    transition-timing-function: ease-out;
+}
+
+.rotate-45-enter, .rotate-45-leave {
+    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(-45deg); /* IE 9 */
+            transform: rotate(-45deg);
+}
+
+/* always present */
+.shade-transition {
+    transition: all .3s ease;
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: black;
+
+    /* to be overridden by transition */
+    opacity: 0.3;
+}
+
+/* .shade-enter defines the starting state for entering */
+/* .shade-leave defines the ending state for leaving */
+.shade-enter, .shade-leave {
+  opacity: 0;
+}
+
+/* always present */
+.drop-down-transition {
+    transition: all .3s ease;
+    position: absolute;
+
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    padding: 0;
+}
+
+/* .drop-down-enter defines the starting state for entering */
+/* .drop-down-leave defines the ending state for leaving */
+.drop-down-enter, .drop-down-leave {
+    height: 0%;
 }
