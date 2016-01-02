@@ -25,6 +25,7 @@ export default Vue.extend({
         }
     },
     ready() {
+        this.$els.name.focus()
     },
     methods: {
         insert_event(event) {
@@ -35,11 +36,8 @@ export default Vue.extend({
         }
     },
     computed: {
-    },
-    watch: {
-
-    },
-    events: {
-
+        valid_event() {
+            return (this.event.name) ? true : false
+        }
     }
 })

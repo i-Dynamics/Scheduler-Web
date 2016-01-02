@@ -3,18 +3,45 @@
 
     <div class="list-header u-full-width">
         <span id="event-panel-title">
-            <h4> {{ title }} </h4>
+            <h4 v-if="state != states.SEARCH" transition="expand-horizontal-fade"> {{ title }} </h4>
         </span>
-        <span class="action-bar pull-right no-select">
-            <i id="event-panel-search-button" class="action-bar-button fa fa-search fa-fw" v-if="!display_insert" transition="fade"></i>
-            <i id="event-panel-filter-button" class="action-bar-button fa fa-filter fa-fw" v-if="!display_insert" transition="fade"></i>
-            <i id="event-panel-sort-button" class="action-bar-button fa fa-sort-alpha-desc fa-fw" v-if="!display_insert" transition="fade"></i>
-            <i id="event-panel-plus-button" class="action-bar-button fa fa-plus fa-fw rotate-45" @click="toggle_insert()" :class="{'rotate-45-enter': display_insert}"></i>
+        <span class="action-bar no-select">
+            <i  id="event-panel-search-button" 
+                class="action-bar-button fa fa-search fa-fw" 
+                v-if="state != states.INSERT" 
+                transition="fade"
+                @click="search_button_clicked()"></i>
+
+            <input  
+                v-el:search
+                class="action-bar-search"
+                type="text"
+                v-if="state == states.SEARCH"
+                v-model="search_query"
+                transition="expand-horizontal-fade"
+                placeholder="search"
+                @keyup.esc="search_query ? search_query = '' : state = states.NORMAL">
+
+            <i  id="event-panel-filter-button" 
+                class="action-bar-button fa fa-filter fa-fw" 
+                v-if="state != states.INSERT" 
+                transition="fade"></i>
+
+            <i  id="event-panel-sort-button" 
+                :class="['action-bar-button', 'fa', 'fa-fw', sort_order == 1 ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc']"
+                v-if="state != states.INSERT" 
+                transition="fade"
+                @click="sort_order *= -1"></i>
+
+            <i  id="event-panel-plus-button" 
+                class="action-bar-button fa fa-plus fa-fw rotate-45" 
+                @click="plus_button_clicked()" 
+                :class="{'rotate-45-enter': state != states.NORMAL}"></i>
         </span>
     </div>
     <div id="events-panel-list" class="list-body u-full-width">
         <ul>
-            <li v-for="event in display_events" class="event-item no-select" draggable="true">
+            <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order" class="event-item no-select" draggable="true">
                 <span class="list-item-text"> {{ event.name }} </span>
                 <span class="event-button info-button pull-right" >
                     <i class="fa fa-info fa-fw"></i>
@@ -25,8 +52,8 @@
             </li>
         </ul>
         
-        <div v-if="display_insert" transition="shade"></div>
-        <div v-if="display_insert" transition="drop-down">
+        <div v-if="state == states.INSERT" transition="shade"></div>
+        <div v-if="state == states.INSERT" transition="drop-down">
             <insert-event-panel 
                 :calendar="calendar"
                 v-on:completed="handle_insert_completion"></insert-event-panel>

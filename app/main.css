@@ -370,6 +370,17 @@ ul li span {
     opacity: 0;
 }
 
+.expand-horizontal-fade-transition {
+    transition: all .3s ease;
+    opacity: 1;
+    width: 55%;
+}
+
+.expand-horizontal-fade-enter, .expand-horizontal-fade-leave {
+    opacity: 0;
+    width: 0;
+}
+
 .rotate-45-transition {
     -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
         -ms-transform: rotate(0deg); /* IE 9 */

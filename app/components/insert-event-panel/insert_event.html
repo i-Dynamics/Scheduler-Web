@@ -2,24 +2,28 @@
 <div class="InsertEventPanel">
     <!-- Content -->
     <form class="main-form">
-        <div id="insert-event-panel-name-required" class="required">
+        <div id="insert-event-panel-name-required" :class="{'required': !event.name}">
             <input
+                v-el:name
                 id="insert-event-panel-name"
                 class="u-full-width"
                 type="text"
                 placeholder="name"
-                v-model="event.name">
+                v-model="event.name"
+                @keyup.esc="event.name ? event.name = '' : $emit('completed')">
         </div>
         <textarea
                 id="insert-event-panel-note"
                 class="u-full-width"
                 placeholder="notes"
-                v-model="event.notes"></textarea>
+                v-model="event.notes"
+                @keyup.esc="event.notes ? event.notes = '' : $emit('completed')"></textarea>
         <input
                 id="insert-event-submit"
                 class="button-primary u-full-width"
                 type="submit"
                 value="Create"
+                v-bind:disabled="!valid_event"
                 @click="insert_event(event)">
     </form>
 </div>

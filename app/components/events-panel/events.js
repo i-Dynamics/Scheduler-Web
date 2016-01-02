@@ -17,27 +17,41 @@ export default Vue.extend({
     data() {
         return {
             title: 'Events',
-            display_insert: false
+            state: 0,
+            states: {
+                NORMAL: 0,
+                INSERT: 1,
+                SEARCH: 2
+            },
+            search_query: '',
+            sort_order: 1
         }
     },
     ready() {
         this.$root.control.get_events(this.calendar)
     },
     methods: {
-        toggle_insert() { 
-            this.display_insert = !this.display_insert
-        },
         handle_insert_completion() {
-            this.display_insert = false
+            this.state = this.states.NORMAL
         },
-        test() {
-            console.log("hello")
+        plus_button_clicked() {
+            if (this.state == this.states.NORMAL) {
+                this.state = this.states.INSERT
+            } else if (this.state == this.states.SEARCH) {
+                this.search_query = ''
+                this.state = this.states.NORMAL
+            } else {
+                this.state = this.states.NORMAL
+            }
+        },
+        search_button_clicked() {
+            this.state = this.states.SEARCH
+            this.$nextTick( () => {
+                this.$els.search.focus()
+            })
         }
     },
     computed: {
-        display_events() {
-            return this.calendar.events
-        }
     },
     events: {
         insert_event(event) {
