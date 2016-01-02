@@ -168,6 +168,12 @@ ul li {
 }
 
 #Scheduler
+.list-body ul li.selected {
+    background-color: #FFF3F2;
+    font-weight: bold;
+}
+
+#Scheduler
 .list-body
 ul li:hover {
     background-color: #FFF3F2;

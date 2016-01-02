@@ -85,6 +85,12 @@ input.action-bar-search {
     background-color: #FFF3F2;
 }
 
+.EventsPanel
+.list-body ul li .event-item.selected {
+    background-color: #FFF3F2;
+    font-weight: bold;
+}
+
 .EventsPanel .info-button,
 .EventsPanel .edit-button {
     font-size: 16px;

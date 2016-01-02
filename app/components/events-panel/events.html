@@ -41,7 +41,14 @@
     </div>
     <div id="events-panel-list" class="list-body u-full-width">
         <ul>
-            <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order" class="event-item no-select" draggable="true">
+            <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order" 
+                class="event-item no-select" 
+                :class="{'selected': event == selected_event}"
+                draggable="true" 
+                v-on:dragstart="selected_event = event" 
+                v-on:dragend="selected_event = null"
+                @click="selected_event = selected_event == event ? null : event">
+
                 <span class="list-item-text"> {{ event.name }} </span>
                 <span class="event-button info-button pull-right" >
                     <i class="fa fa-info fa-fw"></i>

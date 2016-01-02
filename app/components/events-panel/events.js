@@ -23,8 +23,9 @@ export default Vue.extend({
                 INSERT: 1,
                 SEARCH: 2
             },
-            search_query: '',
-            sort_order: 1
+            search_query: null,
+            sort_order: 1,
+            selected_event: null,
         }
     },
     ready() {
@@ -49,6 +50,9 @@ export default Vue.extend({
             this.$nextTick( () => {
                 this.$els.search.focus()
             })
+        },
+        drag(event) {
+            this.selected_event = event
         }
     },
     computed: {
