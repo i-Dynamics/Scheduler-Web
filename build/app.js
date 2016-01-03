@@ -11609,7 +11609,7 @@ $__System.register("74", [], function() { return { setters: [], execute: functio
 (function() {
 var _removeDefine = $__System.get("@@amd-helpers").createDefine();
 define("75", [], function() {
-  return "<!-- TemplateName -->\n<div class=\"CalendarPanel\">\n    <!-- Content -->\n    <div id=\"calendar-panel-title\" class=\"list-header calendar-header u-full-width\" v-if=\"calendar\">\n        <span class=\"navigation\">\n            <i class=\"fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base\" \n               ></i>\n            <h4 class=\"calendar-title\"> {{ calendar.name }} </h4>\n            <i class=\"fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base\" \n               ></i>\n        </span>\n\n        <span class=\"settings pull-right no-select\">\n            <i class=\"fa fa-fw fa-cog cursor-pointer transition-base\"></i>\n        </span>\n\n        <span class=\"view-options pull-right no-select\">\n            <i class=\"fa fa-fw fa-th cursor-pointer transition-base\" \n               ></i>\n            <i class=\"fa fa-fw fa-th-large cursor-pointer transition-base\"></i>\n            <i class=\"fa fa-fw fa-square cursor-pointer transition-base\"></i>\n        </span>\n    </div>\n    <div id=\"calendar\" v-el:calendar></div>\n    <ul>\n        <li v-for=\"booking in grouped_bookings\">\n            {{booking | json 4}}\n        </li>\n    </ul>\n</div>";
+  return "<!-- TemplateName -->\n<div class=\"CalendarPanel\">\n    <!-- Content -->\n    <div id=\"calendar-panel-title\" class=\"list-header calendar-header u-full-width\" v-if=\"calendar\">\n        <span class=\"navigation\">\n            <i class=\"fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base\"\n               ></i>\n            <h4 class=\"calendar-title\"> {{ calendar.name }} </h4>\n            <i class=\"fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base\"\n               ></i>\n        </span>\n\n        <span class=\"settings pull-right no-select\">\n            <i class=\"fa fa-fw fa-cog cursor-pointer transition-base\"></i>\n        </span>\n\n        <span class=\"view-options pull-right no-select\">\n            <i class=\"fa fa-fw fa-th cursor-pointer transition-base\"\n               ></i>\n            <i class=\"fa fa-fw fa-th-large cursor-pointer transition-base\"></i>\n            <i class=\"fa fa-fw fa-square cursor-pointer transition-base\"></i>\n        </span>\n    </div>\n    <div id=\"calendar\" v-el:calendar></div>\n    <!-- <ul>\n        <li v-for=\"booking in grouped_bookings\">\n            {{booking | json 4}}\n        </li>\n    </ul> -->\n</div>\n";
 });
 
 _removeDefine();
@@ -46996,7 +46996,7 @@ $__System.register('1', ['8', '9', '11', '36', '41', '90', 'a', 'b', '8d', 'b6',
                     this.control = new Control(this, ws_url);
                 },
                 ready: function ready() {
-                    var app = window.app = this;
+                    if (debug) window.app = this;
                 },
                 watch: {},
                 methods: {

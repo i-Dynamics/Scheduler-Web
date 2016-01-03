@@ -3,10 +3,10 @@
     <!-- Content -->
     <div id="calendar-panel-title" class="list-header calendar-header u-full-width" v-if="calendar">
         <span class="navigation">
-            <i class="fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base" 
+            <i class="fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base"
                ></i>
             <h4 class="calendar-title"> {{ calendar.name }} </h4>
-            <i class="fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base" 
+            <i class="fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base"
                ></i>
         </span>
 
@@ -15,16 +15,16 @@
         </span>
 
         <span class="view-options pull-right no-select">
-            <i class="fa fa-fw fa-th cursor-pointer transition-base" 
+            <i class="fa fa-fw fa-th cursor-pointer transition-base"
                ></i>
             <i class="fa fa-fw fa-th-large cursor-pointer transition-base"></i>
             <i class="fa fa-fw fa-square cursor-pointer transition-base"></i>
         </span>
     </div>
     <div id="calendar" v-el:calendar></div>
-    <ul>
+    <!-- <ul>
         <li v-for="booking in grouped_bookings">
             {{booking | json 4}}
         </li>
-    </ul>
+    </ul> -->
 </div>

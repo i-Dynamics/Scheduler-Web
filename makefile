@@ -6,13 +6,13 @@ build:
 	- rm -rf build
 	mkdir build
 	jspm bundle-sfx app/main build/app.js
-	./node_modules/.bin/uglifyjs build/app.js -o build/app.min.js
-	./node_modules/.bin/html-build index.html --remove-all --minify --insert app.min.js -o build/index.html
+	uglifyjs build/app.js -o build/app.min.js
+	html-dist index.html --remove-all --minify --insert app.min.js -o build/index.html
 	mkdir -p build/images
 	cp -r images/* build/images/
 	cp loading.css build/loading.css
-	mkdir -p build/jspm_packages/npm/font-awesome@4.4.0/fonts
-	cp -r jspm_packages/npm/font-awesome@4.4.0/fonts/* build/jspm_packages/npm/font-awesome@4.4.0/fonts/
+	mkdir -p build/jspm_packages/npm/font-awesome@4.5.0/fonts
+	cp -r jspm_packages/npm/font-awesome@4.5.0/fonts/* build/jspm_packages/npm/font-awesome@4.5.0/fonts/
 	- rm consts.js
 	echo "$debug" > consts.js
 # deploy:
