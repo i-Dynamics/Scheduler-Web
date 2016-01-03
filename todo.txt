@@ -3,3 +3,7 @@ TODO:
         just put ids and determine the truth of these objects in the graph
         put a getter and setter on the objects with id references which will fetch the objects based on id
         (this may require back references in the object graph)
+    - broadcast web socket disconnect and reconnect. panels need to call get_x again to re-sync with data
+    - add paging to get_bookings(from=3434324, to=34343245).
+        Otherwise users will need to pull down all the bookings ever when they only need to see bookings that will
+        show on the calendar current calendar view
