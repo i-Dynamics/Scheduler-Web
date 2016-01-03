@@ -72,19 +72,6 @@ export default Vue.extend({
 
     },
     events: {
-        // insert_booking(booking) {
-        //     let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
-        //     calendar.bookings.push(booking)
-        // },
-        // update_booking(booking) {
-        //     let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
-        //     let index    = calendar.bookings.findIndex(b => b.id == booking.id)
-        //     calendar.bookings.$set(index, booking)
-        // },
-        // delete_booking(id) {
-        //     let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
-        //     var index    = calendar.bookings.findIndex(b => b.id == id)
-        //     calendar.bookings.splice(index, 1)
-        // }
+        
     }
 })

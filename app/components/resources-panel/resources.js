@@ -24,7 +24,7 @@ export default Vue.extend({
         this.$root.control.get_resources(this.calendar)
     },
     methods: {
-        toggle_insert() { 
+        toggle_insert() {
             this.display_insert = !this.display_insert
         },
         handle_insert_completion() {
@@ -40,19 +40,6 @@ export default Vue.extend({
 
     },
     events: {
-        insert_resource(resource) {
-            let calendar = this.$root.store.user.calendars.find(c => c.id == resource.calendar.id)
-            calendar.resources.push(resource)
-        },
-        update_resource(resource) {
-            let calendar = this.$root.store.user.calendars.find(c => c.id == resource.calendar.id)
-            let index    = calendar.resources.findIndex(r => r.id == resource.id)
-            calendar.resources.$set(index, resource)
-        },
-        delete_resource(id) {
-            let calendar = this.$root.store.user.calendars.find(c => c.id == resource.calendar.id)
-            var index    = calendar.resources.findIndex(r => r.id == id)
-            calendar.resources.splice(index, 1)
-        }
+        
     }
 })

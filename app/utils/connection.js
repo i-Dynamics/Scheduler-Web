@@ -48,7 +48,7 @@ export default class Connection {
                     docCookies.setItem(payload.cookie_name, payload.cookie,expires.toGMTString());
                 }
             } else {
-                this._app.$broadcast(payload.signal, payload.message);
+                this._app.$emit(payload.signal, payload.message);
             }
         };
         this._ws.onclose = () =>{
