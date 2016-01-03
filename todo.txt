@@ -1,2 +1,5 @@
 TODO:
-    - 
+    - To solve the problem where you have multiple references to the same object in the graph
+        just put ids and determine the truth of these objects in the graph
+        put a getter and setter on the objects with id references which will fetch the objects based on id
+        (this may require back references in the object graph)
