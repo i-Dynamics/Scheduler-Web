@@ -72,6 +72,11 @@ router.start({
         delete_user(user) {
             this.store.user = null
         },
+        set_calendars(calendars) {
+            this.store.user.update_from_json({
+                calendars: calendars
+            })
+        },
         insert_calendar(calendar) {
             calendar = classify(calendar)
             this.store.user.calendars.push(calendar)
@@ -84,6 +89,11 @@ router.start({
             var index = this.store.user.calendars.findIndex(c => c.id == id)
             calendar.calendars.splice(index, 1)
         },
+        set_invites(invites) {
+            this.store.user.update_from_json({
+                invites: invites
+            })
+        },
         insert_invite(invite) {
             invite = classify(invite)
             this.store.user.invites.push(invite)
@@ -95,6 +105,12 @@ router.start({
         delete_invite(id) {
             let index = this.store.user.invites.findIndex(i => i.id == id)
             calendar.invites.splice(index, 1)
+        },
+        set_events(calendar_id, events) {
+            let calendar = this.store.user.calendars.find(c => c.id == calendar_id)
+            calendar.update_from_json({
+                events: events
+            })
         },
         insert_event(event) {
             let calendar = this.store.user.calendars.find(c => c.id == event.calendar.id)
@@ -111,6 +127,12 @@ router.start({
             let index    = calendar.events.findIndex(e => e.id == id)
             calendar.events.splice(index, 1)
         },
+        set_resources(calendar_id, resources) {
+            let calendar = this.store.user.calendars.find(c => c.id == calendar_id)
+            calendar.update_from_json({
+                resources: resources
+            })
+        },
         insert_resource(resource) {
             let calendar = this.store.user.calendars.find(c => c.id == resource.calendar.id)
             resources    = classify(resource)
@@ -125,6 +147,12 @@ router.start({
             let calendar = this.store.user.calendars.find(c => c.id == resource.calendar.id)
             let index    = calendar.resources.findIndex(r => r.id == id)
             calendar.resources.splice(index, 1)
+        },
+        set_bookings(calendar_id, bookings) {
+            let calendar = this.store.user.calendars.find(c => c.id == calendar_id)
+            calendar.update_from_json({
+                bookings: bookings
+            })
         },
         insert_booking(booking) {
             let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
