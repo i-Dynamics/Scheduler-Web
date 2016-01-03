@@ -19,6 +19,6 @@ export default function classify(json) {
         case    'event': return new Event(json)
         case     'user': return new User(json)
 
-        default return json
+        default: return json
     }
 }
