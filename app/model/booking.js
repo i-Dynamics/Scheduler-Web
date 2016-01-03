@@ -10,6 +10,8 @@ export default class Booking extends Uniquable
         event      = null,
         resource   = null
     }) {
+        super()
+        
         this.id         = id
         this.start_date = start_date
         this.end_date   = end_date

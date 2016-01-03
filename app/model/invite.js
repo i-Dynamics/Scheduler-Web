@@ -9,6 +9,8 @@ export default class Invite extends Uniquable
         user     = null,
         calendar = null
     }) {
+        super()
+        
         this.id       = id
         this.title    = title
         this.user     = user

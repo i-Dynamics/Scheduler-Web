@@ -10,6 +10,8 @@ export default class User extends Uniquable
         calendars     = [],
         invites       = []
     }) {
+        super()
+        
         this.id            = id
         this.username      = username
         this.email_address = email_address

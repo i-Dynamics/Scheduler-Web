@@ -11,6 +11,8 @@ export default class Resource extends Uniquable
         bookings    = [],
         tags        = []
     }) {
+        super()
+        
         this.id          = id
         this.name        = name
         this.preferences = preferences

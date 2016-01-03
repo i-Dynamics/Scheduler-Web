@@ -12,6 +12,8 @@ export default class Event extends Uniquable
         hours      = null,
         bookings   = []
     }) {
+        super()
+        
         this.id         = id
         this.name       = name
         this.start_date = start_date

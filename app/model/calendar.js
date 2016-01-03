@@ -14,6 +14,8 @@ export default class Calendar extends Uniquable
         viewers      = [],
         invites      = []
     }) {
+        super()
+        
         this.id           = id
         this.name         = name
         this.resources    = resources
