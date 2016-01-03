@@ -64,68 +64,68 @@ router.start({
             this.$broadcast('resize', size)
         },
         insert_user(user) {
-            store.user = classify(user)
+            this.store.user = classify(user)
         },
         update_user(user) {
-            store.user.update_from_json(user)
+            this.store.user.update_from_json(user)
         },
         delete_user(user) {
-            store.user = null
-        }
+            this.store.user = null
+        },
         insert_invite(invite) {
             invite = classify(invite)
-            store.user.invites.push(invite)
+            this.store.user.invites.push(invite)
         },
         update_invite(invite) {
-            let invite = store.user.invites.find(i => i.id == invite.id)
-            invite.update_from_json(invite)
+            let old_invite = this.store.user.invites.find(i => i.id == invite.id)
+            old_invite.update_from_json(invite)
         },
         delete_invite(id) {
-            let index = store.user.invites.findIndex(i => i.id == id)
+            let index = this.store.user.invites.findIndex(i => i.id == id)
             calendar.invites.splice(index, 1)
         },
         insert_event(event) {
-            let calendar = store.user.calendars.find(c => c.id == event.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == event.calendar.id)
             event        = classify(event)
             calendar.events.push(event)
         },
         update_event(event) {
-            let calendar  = store.user.calendars.find(c => c.id == event.calendar.id)
+            let calendar  = this.store.user.calendars.find(c => c.id == event.calendar.id)
             let old_event = calendar.events.find(e => e.id == event.id)
             old_event.update_from_json(event)
         },
         delete_event(id) {
-            let calendar = store.user.calendars.find(c => c.id == event.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == event.calendar.id)
             let index    = calendar.events.findIndex(e => e.id == id)
             calendar.events.splice(index, 1)
         },
         insert_resource(resource) {
-            let calendar = store.user.calendars.find(c => c.id == resource.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == resource.calendar.id)
             resources    = classify(resource)
             calendar.resources.push(resource)
         },
         update_resource(resource) {
-            let calendar     = store.user.calendars.find(c => c.id == resource.calendar.id)
+            let calendar     = this.store.user.calendars.find(c => c.id == resource.calendar.id)
             let old_resource = calendar.resources.find(r => r.id == resource.id)
             old_resource.update_from_json(resource)
         },
         delete_resource(id) {
-            let calendar = store.user.calendars.find(c => c.id == resource.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == resource.calendar.id)
             let index    = calendar.resources.findIndex(r => r.id == id)
             calendar.resources.splice(index, 1)
         },
         insert_booking(booking) {
-            let calendar = store.user.calendars.find(c => c.id == booking.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
             booking      = classify(booking)
             calendar.bookings.push(booking)
         },
         update_booking(booking) {
-            let calendar    = store.user.calendars.find(c => c.id == booking.calendar.id)
+            let calendar    = this.store.user.calendars.find(c => c.id == booking.calendar.id)
             let old_booking = calendar.bookings.find(b => b.id == booking.id)
             old_booking.update_from_json(booking)
         },
         delete_booking(id) {
-            let calendar = store.user.calendars.find(c => c.id == booking.calendar.id)
+            let calendar = this.store.user.calendars.find(c => c.id == booking.calendar.id)
             let index    = calendar.bookings.findIndex(b => b.id == id)
             calendar.bookings.splice(index, 1)
         }

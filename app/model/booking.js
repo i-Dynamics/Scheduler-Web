@@ -1,4 +1,5 @@
 import Uniquable from 'app/model/uniquable'
+import classify  from 'app/utils/classify'
 
 
 export default class Booking extends Uniquable
@@ -11,11 +12,11 @@ export default class Booking extends Uniquable
         resource   = null
     }) {
         super()
-        
+
         this.id         = id
         this.start_date = start_date
         this.end_date   = end_date
-        this.event      = event
-        this.resource   = resource
+        this.event      = classify(event)
+        this.resource   = classify(resource)
     }
 }

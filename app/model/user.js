@@ -1,4 +1,5 @@
 import Uniquable from 'app/model/uniquable'
+import classify  from 'app/utils/classify'
 
 
 export default class User extends Uniquable
@@ -11,11 +12,11 @@ export default class User extends Uniquable
         invites       = []
     }) {
         super()
-        
+
         this.id            = id
         this.username      = username
         this.email_address = email_address
-        this.calendars     = calendars
-        this.invites       = invites
+        this.calendars     = calendars.map(c => classify(c))
+        this.invites       = invites.map(i => classify(i))
     }
 }

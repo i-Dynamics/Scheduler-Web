@@ -1,4 +1,5 @@
 import Uniquable from 'app/model/uniquable'
+import classify  from 'app/utils/classify'
 
 
 export default class Invite extends Uniquable
@@ -10,10 +11,10 @@ export default class Invite extends Uniquable
         calendar = null
     }) {
         super()
-        
+
         this.id       = id
         this.title    = title
-        this.user     = user
-        this.calendar = calendar
+        this.user     = classify(user)
+        this.calendar = classify(calendar)
     }
 }

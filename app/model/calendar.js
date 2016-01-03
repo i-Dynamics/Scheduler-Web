@@ -1,4 +1,5 @@
 import Uniquable from 'app/model/uniquable'
+import classify  from 'app/utils/classify'
 
 
 export default class Calendar extends Uniquable
@@ -15,15 +16,15 @@ export default class Calendar extends Uniquable
         invites      = []
     }) {
         super()
-        
+
         this.id           = id
         this.name         = name
-        this.resources    = resources
-        this.events       = events
-        this.bookings     = bookings
-        this.owners       = owners
-        this.contributors = contributors
-        this.viewers      = viewers
-        this.invites      = invites
+        this.resources    = resources.map(r => classify(r))
+        this.events       = events.map(e => classify(e))
+        this.bookings     = bookings.map(b => classify(b))
+        this.owners       = owners.map(o => classify(o))
+        this.contributors = contributors.map(c => classify(c))
+        this.viewers      = viewers.map(v => classify(v))
+        this.invites      = invites.map(i => classify(i))
     }
 }
