@@ -1,4 +1,5 @@
 import docCookies from "app/utils/cookies";
+import classify from 'app/utils/classify'
 
 
 export default class Connection {
@@ -40,7 +41,7 @@ export default class Connection {
                     this.send("cookie",{value: value});
                 }
             } else if(payload.signal == "user") {
-                this._app.store.user = payload.message;
+                this._app.store.user = classify(payload.message);
                 if(payload.cookie){
                     var expires = new Date();
                     expires.setMonth( expires.getMonth() + 1 );
