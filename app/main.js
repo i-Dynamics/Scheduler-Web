@@ -72,6 +72,18 @@ router.start({
         delete_user(user) {
             this.store.user = null
         },
+        insert_calendar(calendar) {
+            calendar = classify(calendar)
+            this.store.user.calendars.push(calendar)
+        },
+        update_calendar(calendar) {
+            let old_calendar = this.store.user.calendars.find(c => c.id == calendar.id)
+            old_calendar.update_from_json(calendar)
+        },
+        delete_calendar(id) {
+            var index = this.store.user.calendars.findIndex(c => c.id == id)
+            calendar.calendars.splice(index, 1)
+        },
         insert_invite(invite) {
             invite = classify(invite)
             this.store.user.invites.push(invite)

@@ -44,17 +44,6 @@ export default Vue.extend({
 
     },
     events: {
-        resize: 'resize',
-        // insert_calendar(calendar) {
-        //     store.user.calendars.push(calendar)
-        // },
-        // update_calendar(calendar) {
-        //     let index = store.user.calendars.findIndex(c => c.id == calendar.id)
-        //     store.user.calendars.$set(index, calendar)
-        // },
-        // delete_calendar(id) {
-        //     var index = store.user.calendars.findIndex(c => c.id == id)
-        //     calendar.calendars.splice(index, 1)
-        // }
+        resize: 'resize'
     }
 })
