@@ -6,13 +6,13 @@
             <h4 v-if="state != states.SEARCH" transition="expand-horizontal-fade"> {{ title }} </h4>
         </span>
         <span class="action-bar no-select">
-            <i  id="event-panel-search-button" 
-                class="action-bar-button fa fa-search fa-fw" 
-                v-if="state != states.INSERT" 
+            <i  id="event-panel-search-button"
+                class="action-bar-button fa fa-search fa-fw"
+                v-if="state != states.INSERT"
                 transition="fade"
                 @click="search_button_clicked()"></i>
 
-            <input  
+            <input
                 v-el:search
                 class="action-bar-search"
                 type="text"
@@ -22,30 +22,30 @@
                 placeholder="search"
                 @keyup.esc="search_query ? search_query = '' : state = states.NORMAL">
 
-            <i  id="event-panel-filter-button" 
-                class="action-bar-button fa fa-filter fa-fw" 
-                v-if="state != states.INSERT" 
+            <i  id="event-panel-filter-button"
+                class="action-bar-button fa fa-filter fa-fw"
+                v-if="state != states.INSERT"
                 transition="fade"></i>
 
-            <i  id="event-panel-sort-button" 
+            <i  id="event-panel-sort-button"
                 :class="['action-bar-button', 'fa', 'fa-fw', sort_order == 1 ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc']"
                 v-if="state != states.INSERT" 
                 transition="fade"
                 @click="sort_order *= -1"></i>
 
-            <i  id="event-panel-plus-button" 
-                class="action-bar-button fa fa-plus fa-fw rotate-45" 
-                @click="plus_button_clicked()" 
+            <i  id="event-panel-plus-button"
+                class="action-bar-button fa fa-plus fa-fw rotate-45"
+                @click="plus_button_clicked()"
                 :class="{'rotate-45-enter': state != states.NORMAL}"></i>
         </span>
     </div>
     <div id="events-panel-list" class="list-body u-full-width">
         <ul>
-            <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order" 
-                class="event-item no-select" 
+            <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order"
+                class="event-item no-select"
                 :class="{'selected': event == selected_event}"
-                draggable="true" 
-                v-on:dragstart="selected_event = event" 
+                draggable="true"
+                v-on:dragstart="selected_event = event"
                 v-on:dragend="selected_event = null"
                 @click="selected_event = selected_event == event ? null : event">
 
@@ -58,10 +58,10 @@
                 </span>
             </li>
         </ul>
-        
+
         <div v-if="state == states.INSERT" transition="shade"></div>
         <div v-if="state == states.INSERT" transition="drop-down">
-            <insert-event-panel 
+            <insert-event-panel
                 :calendar="calendar"
                 v-on:completed="handle_insert_completion"></insert-event-panel>
         </div>
