@@ -109,7 +109,9 @@ export default class Connection {
                 if(error_back) error_back(response.error)
                 return
             }
-            this._app.store.user.calendars = response.result
+            this._app.store.user.update_from_json({
+                calendars: response.result
+            })
         })
     }
 
@@ -119,7 +121,9 @@ export default class Connection {
                 if(error_back) error_back(response.error)
                 return
             }
-            calendar.events = response.result
+            calendar.update_from_json({
+                events: response.result
+            })
         })
     }
 
@@ -135,7 +139,9 @@ export default class Connection {
                 if(error_back) error_back(response.error)
                 return
             }
-            calendar.resources = response.result
+            calendar.update_from_json({
+                resources: response.result
+            })
         })
     }
 
@@ -151,7 +157,9 @@ export default class Connection {
                 if(error_back) error_back(response.error)
                 return
             }
-            calendar.bookings = response.result
+            calendar.update_from_json({
+                bookings: response.result
+            })
         })
     }
 }
