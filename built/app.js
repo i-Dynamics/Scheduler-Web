@@ -46996,7 +46996,10 @@ $__System.register('1', ['8', '9', '11', '36', '41', '90', 'a', 'b', '8d', 'b6',
                     this.control = new Control(this, ws_url);
                 },
                 ready: function ready() {
-                    if (debug) window.app = this;
+                    if (debug) {
+                        console.log("Running Debug");
+                        window.app = this;
+                    }
                 },
                 watch: {},
                 methods: {

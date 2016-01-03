@@ -50,7 +50,10 @@ router.start({
         this.control = new Control(this, ws_url)
     },
     ready() {
-        if (debug) window.app = this
+        if (debug) {
+            console.log("Running Debug")
+            window.app = this
+        }
     },
     watch: {
 

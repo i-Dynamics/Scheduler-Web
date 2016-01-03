@@ -1,19 +1,17 @@
 build:
-	debug=$(cat consts.js)
-	echo "$debug"
 	- rm consts.js
 	echo "export const debug = false\nexport const ws_url = 'wss://a2z-scheduler-dev.herokuapp.com/v1/websocket'\n" > consts.js
-	- rm -rf build
-	mkdir build
-	jspm bundle-sfx app/main build/app.js
-	uglifyjs build/app.js -o build/app.min.js
-	html-dist index.html --remove-all --minify --insert app.min.js -o build/index.html
-	mkdir -p build/images
-	cp -r images/* build/images/
-	cp loading.css build/loading.css
-	mkdir -p build/jspm_packages/npm/font-awesome@4.5.0/fonts
-	cp -r jspm_packages/npm/font-awesome@4.5.0/fonts/* build/jspm_packages/npm/font-awesome@4.5.0/fonts/
+	- rm -rf built
+	mkdir built
+	jspm bundle-sfx app/main built/app.js
+	uglifyjs built/app.js -o built/app.min.js
+	html-dist index.html --remove-all --minify --insert app.min.js -o built/index.html
+	mkdir -p built/images
+	cp -r images/* built/images/
+	cp loading.css built/loading.css
+	mkdir -p built/jspm_packages/npm/font-awesome@4.5.0/fonts
+	cp -r jspm_packages/npm/font-awesome@4.5.0/fonts/* built/jspm_packages/npm/font-awesome@4.5.0/fonts/
 	- rm consts.js
-	echo "$debug" > consts.js
+	echo "export const debug = false\nexport const ws_url = 'ws://localhost:8889/v1/websocket'\n" > consts.js
 # deploy:
-# 	scp -r -i ~/.ssh/i-Dynamics/idynamics-aws.pem build/* root@54.171.121.214:/var/www/scheduler/
+# 	scp -r -i ~/.ssh/i-Dynamics/idynamics-aws.pem built/* root@54.171.121.214:/var/www/scheduler/
