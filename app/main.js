@@ -43,17 +43,23 @@ router.start({
             control: null,
             store: {
                 user: null
-            }
+            },
+            down_keys: null
         }
     },
     created() {
-        this.control = new Control(this, ws_url)
+        this.control   = new Control(this, ws_url)
+        this.down_keys = new Set()
     },
     ready() {
         if (debug) {
-            console.log("Running Debug")
+            console.warn("Running Debug")
             window.app = this
         }
+
+        // watch key presses
+        document.onkeydown = this.key_down
+        document.onkeyup   = this.key_up
     },
     watch: {
 
@@ -61,6 +67,14 @@ router.start({
     methods: {
         window_size() {
             return { height: window.innerHeight, width: window.innerWidth }
+        },
+        key_down(event) {
+            event = event || window.event
+            this.down_keys.add(event.keyCode)
+        },
+        key_up(event) {
+            event = event || window.event
+            this.down_keys.delete(event.keyCode)
         }
     },
     computed: {
