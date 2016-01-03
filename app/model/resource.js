@@ -10,15 +10,16 @@ export default class Resource extends Uniquable
         preferences = {},
         calendar    = null,
         bookings    = [],
-        tags        = []
+        tags        = [],
+        _surrogate  = true
     }) {
-        super()
+        super(_surrogate)
 
-        this.id          = id
-        this.name        = name
-        this.preferences = preferences
-        this.calendar    = classify(calendar)
-        this.bookings    = bookings.map(b => classify(b))
-        this.tags        = tags
+        this.id           = id
+        this.name         = name
+        this.preferences  = preferences
+        this.calendar     = classify(calendar)
+        this.bookings     = bookings.map(b => classify(b))
+        this.tags         = tags
     }
 }

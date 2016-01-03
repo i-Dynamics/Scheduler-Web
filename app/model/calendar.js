@@ -13,9 +13,10 @@ export default class Calendar extends Uniquable
         owners       = [],
         contributors = [],
         viewers      = [],
-        invites      = []
+        invites      = [],
+        _surrogate   = true
     }) {
-        super()
+        super(_surrogate)
 
         this.id           = id
         this.name         = name

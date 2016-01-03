@@ -10,12 +10,12 @@
 
         <!-- Side Panel -->
         <div class="three columns">
-        
+
             <!-- Events Panel -->
             <div id="events-panel" class="side-panel" v-el:events-panel>
                 <events-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></events-panel>
             </div>
-            
+
             <!-- Resource Panel -->
             <div id="resource-panel" class="side-panel" v-el:resources-panel>
                 <resources-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></resources-panel>

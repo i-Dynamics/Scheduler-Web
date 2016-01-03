@@ -9,9 +9,10 @@ export default class User extends Uniquable
         username      = null,
         email_address = null,
         calendars     = [],
-        invites       = []
+        invites       = [],
+        _surrogate    = true
     }) {
-        super()
+        super(_surrogate)
 
         this.id            = id
         this.username      = username

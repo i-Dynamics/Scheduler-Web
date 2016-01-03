@@ -5,11 +5,24 @@ import classify from 'app/utils/classify'
 
 export default class Uniquable {
 
-    constructor() {
+    constructor(_surrogate = true) {
         this._primary_keys = ['id']
+        this.__surrogate = _surrogate
+    }
+
+    get _surrogate() {
+        return this.__surrogate
+    }
+
+    set _surrogate(value) {
+        // if a object is at any time no longer a surrogate it should never be one again
+        this.__surrogate = (this.__surrogate) ? value : false
     }
 
     * public_properties() {
+        // surrogate counts as public as it should be modified by the update json
+        yield [ '_surrogate', this._surrogate ]
+
         for (let key of Object.keys(this)) {
             if (key.charAt(0) == '_') continue
             yield [ key, this[key] ]
