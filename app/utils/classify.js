@@ -7,7 +7,7 @@ import User     from 'app/model/user'
 
 
 export default function classify(json) {
-    type = json._type
+    let type = json._type
     delete json._type
 
     switch ( type.toLowerCase() )
