@@ -6,8 +6,8 @@ import Event    from 'app/model/event'
 import User     from 'app/model/user'
 
 
-export default function classify(json) {
-    let type = (json._type) ? json._type : 'unknown'
+export default function classify(json = null) {
+    let type = (json && json._type) ? json._type : 'unknown'
 
     switch ( type.toLowerCase() )
     {
