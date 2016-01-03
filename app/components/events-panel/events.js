@@ -50,14 +50,11 @@ export default Vue.extend({
             this.$nextTick( () => {
                 this.$els.search.focus()
             })
-        },
-        drag(event) {
-            this.selected_event = event
         }
     },
     computed: {
     },
     events: {
-        
+
     }
 })
