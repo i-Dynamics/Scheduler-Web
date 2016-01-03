@@ -41,7 +41,7 @@ export default class Connection {
                     this.send("cookie",{value: value});
                 }
             } else if(payload.signal == "user") {
-                this._app.store.user = classify(payload.message);
+                this._app.$emit('insert_user', payload.message)
                 if(payload.cookie){
                     var expires = new Date();
                     expires.setMonth( expires.getMonth() + 1 );
