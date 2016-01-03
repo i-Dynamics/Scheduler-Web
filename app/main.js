@@ -4,6 +4,9 @@ import 'skeleton-css/css/skeleton.css!'
 import './main.css!'
 
 // JS Imports
+// -- Consts
+import {debug, ws_url} from 'consts'
+
 // -- Vue
 import Vue         from 'vue'
 import VueRouter   from 'vue-router'
@@ -15,11 +18,13 @@ import LoginPanel     from 'app/components/login-panel/login'
 
 // -- Connection to server
 import Control  from 'app/utils/connection'
+
+// -- Utils
 import classify from 'app/utils/classify'
 
 
 // Vue global settings
-Vue.config.debug = true
+Vue.config.debug = debug
 Vue.use(VueRouter)
 
 var router = window.router = new VueRouter()
@@ -42,9 +47,7 @@ router.start({
         }
     },
     created() {
-        // var base_url = 'wss://a2z-scheduler-dev.herokuapp.com/v1/websocket'
-        var base_url = 'ws://localhost:8889/v1/websocket'
-        this.control = new Control(this, base_url)
+        this.control = new Control(this, ws_url)
     },
     ready() {
         var app = window.app = this
