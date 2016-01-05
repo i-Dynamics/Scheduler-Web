@@ -7,3 +7,5 @@ TODO:
     - add paging to get_bookings(from=3434324, to=34343245).
         Otherwise users will need to pull down all the bookings ever when they only need to see bookings that will
         show on the calendar current calendar view
+    - Keep surrogates in sync. e.g. when getting booking.resource try: store.user.cal.resources.find(id==id) else return surrogate
+        if resource is deleted from all resources the server should emit update_booking to keep any bookings with references to that resource in sync

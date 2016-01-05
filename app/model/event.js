@@ -16,12 +16,12 @@ export default class Event extends Uniquable
     }) {
         super(_surrogate)
 
-        this.id          = id
-        this.name        = name
-        this.start_date  = start_date
-        this.end_date    = end_date
-        this.notes       = notes
-        this.hours       = hours
-        this.bookings    = bookings.map(b => classify(b))
+        this.id         = id
+        this.name       = name
+        this.start_date = start_date
+        this.end_date   = end_date
+        this.notes      = notes
+        this.hours      = hours
+        this.bookings   = bookings.map(b => classify(b))
     }
 }

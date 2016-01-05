@@ -21,6 +21,7 @@ import Control  from 'app/utils/connection'
 
 // -- Utils
 import classify from 'app/utils/classify'
+import * as systems from 'app/utils/operating_systems'
 
 
 // Vue global settings
@@ -44,12 +45,13 @@ router.start({
             store: {
                 user: null
             },
-            down_keys: null
+            user_os: systems.parse_os_from_user_agent(navigator.userAgent),
+            keys_down: null
         }
     },
     created() {
         this.control   = new Control(this, ws_url)
-        this.down_keys = new Set()
+        this.keys_down = new Set()
     },
     ready() {
         if (debug) {
@@ -62,7 +64,6 @@ router.start({
         document.onkeyup   = this.key_up
     },
     watch: {
-
     },
     methods: {
         window_size() {
@@ -70,11 +71,12 @@ router.start({
         },
         key_down(event) {
             event = event || window.event
-            this.down_keys.add(event.keyCode)
+            this.keys_down.add(event.keyCode)
+            console.log(event.keyCode)
         },
         key_up(event) {
             event = event || window.event
-            this.down_keys.delete(event.keyCode)
+            this.keys_down.delete(event.keyCode)
         }
     },
     computed: {

@@ -7,7 +7,7 @@ export default class Uniquable {
 
     constructor(_surrogate = true) {
         this._primary_keys = ['id']
-        this.__surrogate = _surrogate
+        this.__surrogate   = _surrogate
     }
 
     get _surrogate() {

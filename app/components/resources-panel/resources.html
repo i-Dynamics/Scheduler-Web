@@ -29,7 +29,12 @@
     </div>
     <div id="resources-panel-list" class="list-body u-full-width">
         <ul>
-            <li v-for="resource in display_resources" class="resource-item no-select" draggable="true" >
+            <li v-for="resource in display_resources"
+                class="resource-item no-select"
+                :class="{'selected': selected_resources.indexOf(resource) != -1}"
+                draggable="true"
+                @click="select_resource(resource)" >
+
                 <span class="list-item-text"> {{ resource.name }} </span>
                 <span class="resource-button info-button pull-right" >
                     <i class="fa fa-info fa-fw"></i>
