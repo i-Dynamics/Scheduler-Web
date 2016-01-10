@@ -21,7 +21,7 @@ if (!Array.prototype.set) {
     Array.prototype.set = function(item, bubble) {
         if (typeof(bubble)==='undefined') bubble = false
 
-        var index = this.findIndex(i => i == item)
+        var index = this.findIndex(function(i) {return i == item}) // TODO: Can't do i => i == item uglify doens't like
 
         if (index == -1) this.push(item)
         else if (bubble) this.move(index, this.lastIndex)
@@ -38,7 +38,7 @@ if (!Array.prototype.has) {
 // Removes first occurence of item in array
 if (!Array.prototype.remove) {
     Array.prototype.remove = function(item) {
-        var index = this.findIndex(i => i == item)
+        var index = this.findIndex(function(i) {return i == item}) // TODO: Can't do i => i == item uglify doens't like
         this.splice(index, 1)
     }
 }

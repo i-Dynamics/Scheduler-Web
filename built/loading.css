@@ -22,7 +22,7 @@
 }
 
 /* Hide and show on load */
-[v-cloak] { display:none;  } 
+[v-cloak] { display:none;  }
 
 .loading { display:none; }
 [v-cloak].loading { display:block; }
