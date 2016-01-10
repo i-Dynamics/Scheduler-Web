@@ -63,6 +63,13 @@ export default Vue.extend({
                 this.$els.search.focus()
             })
         },
+        drag_start(resource) {
+            // Make resources only selected if not alraedy part of selected list (otherwise take all selected)
+            if (!this.selected_resources.has(resource)) {
+                this.selected_resources.empty()
+                this.selected_resources.set(resource)
+            }
+        },
         select_resource(resource, resources) {
             // TODO: what if resource is removed by server. needto add watcher to listen for that event here and remove obj from selected
             let osx_client = (this.$root.user_os == systems.operating_systems.OSX),
