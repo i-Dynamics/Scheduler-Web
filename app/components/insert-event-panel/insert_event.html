@@ -24,6 +24,7 @@
                 type="submit"
                 value="Create"
                 v-bind:disabled="!valid_event"
+                @keyup.enter.prevent="insert_event(event)"
                 @click="insert_event(event)">
     </form>
 </div>

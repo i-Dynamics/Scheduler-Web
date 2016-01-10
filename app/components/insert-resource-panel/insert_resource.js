@@ -32,6 +32,9 @@ export default Vue.extend({
         }
     },
     computed: {
+        valid_resource() {
+            return (this.resource.name) ? true : false
+        }
     },
     watch: {
 
