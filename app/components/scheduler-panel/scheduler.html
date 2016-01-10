@@ -4,7 +4,7 @@
         <!-- Calendar Panel -->
         <div class="side-left">
             <div id="calendar-panel" class="main-panel" v-el:calendar-panel>
-                <calendar-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar" transition="fade"></calendar-panel>
+                <calendar-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></calendar-panel>
             </div>
         </div>
 
@@ -13,12 +13,12 @@
 
             <!-- Events Panel -->
             <div id="events-panel" class="side-panel" v-el:events-panel>
-                <events-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar" transition="fade"></events-panel>
+                <events-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></events-panel>
             </div>
 
             <!-- Resource Panel -->
             <div id="resource-panel" class="side-panel" v-el:resources-panel>
-                <resources-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar" transition="fade"></resources-panel>
+                <resources-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></resources-panel>
             </div>
 
         </div>
