@@ -1,3 +1,4 @@
+
 .SchedulerPanel {
     height: 100%;
 }
@@ -9,7 +10,7 @@
 }
 
 .SchedulerPanel .main-panel,
-.SchedulerPanel .side-left, 
+.SchedulerPanel .side-left,
 .SchedulerPanel .side-right {
     height: 100%;
 }
