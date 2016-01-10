@@ -3,7 +3,7 @@ import './resources.css!'
 import tmpl from './resources.html!text'
 
 import Vue from 'vue'
-import InsertEventPanel from 'app/components/insert-resource-panel/insert_resource'
+import InsertResourcePanel from 'app/components/insert-resource-panel/insert_resource'
 
 import * as systems from 'app/utils/operating_systems'
 import {key_codes} from 'app/utils/key_codes'
@@ -12,7 +12,7 @@ import {key_codes} from 'app/utils/key_codes'
 export default Vue.extend({
     template: tmpl,
     components: {
-        'insert-resource-panel': InsertEventPanel
+        'insert-resource-panel': InsertResourcePanel
     },
     props: [
         'calendar'
@@ -20,7 +20,14 @@ export default Vue.extend({
     data() {
         return {
             title: 'Resources',
-            display_insert: false,
+            state: 0,
+            states: {
+                NORMAL: 0,
+                INSERT: 1,
+                SEARCH: 2
+            },
+            search_query: null,
+            sort_order: 1,
             selected_resources: []
         }
     },
@@ -28,19 +35,32 @@ export default Vue.extend({
         this.$root.control.get_resources(this.calendar)
     },
     methods: {
-        toggle_insert() {
-            this.display_insert = !this.display_insert
-        },
         handle_insert_completion() {
-            this.display_insert = false
+            this.state = this.states.NORMAL
         },
-        select_resource(resource) {
+        plus_button_clicked() {
+            if (this.state == this.states.NORMAL) {
+                this.state = this.states.INSERT
+            } else if (this.state == this.states.SEARCH) {
+                this.search_query = ''
+                this.state = this.states.NORMAL
+            } else {
+                this.state = this.states.NORMAL
+            }
+        },
+        search_button_clicked() {
+            this.state = this.states.SEARCH
+            this.$nextTick( () => {
+                this.$els.search.focus()
+            })
+        },
+        select_resource(resource, resources) {
             // TODO: what if resource is removed by server. needto add watcher to listen for that event here and remove obj from selected
-            let osx_client = (this.$root.user_os == systems.operating_systems.OSX)
-            let keys_down  = this.$root.keys_down
-            let selected   = this.selected_resources
+            let osx_client = (this.$root.user_os == systems.operating_systems.OSX),
+                keys_down  = this.$root.keys_down,
+                selected   = this.selected_resources,
+                add        = (osx_client) ? keys_down.has(key_codes.CMD) : keys_down.has(key_codes.CTRL)
             // add resource - cmd (os x) or ctrl (other os) and only key pressed
-            let add = (osx_client) ? keys_down.has(key_codes.CMD) : keys_down.has(key_codes.CTRL)
             if (add && keys_down.length == 1) {
                 // deselect or seelc bepending if already seelcted
                 if (selected.has(resource))
@@ -74,7 +94,15 @@ export default Vue.extend({
     },
     computed: {
         display_resources() {
-            return this.calendar.resources
+            // TODO: sort and filter programatically  | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order"
+            let filter_by = Vue.options.filters['filterBy'],
+                order_by  = Vue.options.filters['orderBy'],
+                result    = this.calendar.resources
+
+            result = filter_by(result, this.search_query, ['name', 'notes']),
+            result = order_by(result, 'name', this.sort_order)
+
+            return result
         }
     },
     watch: {

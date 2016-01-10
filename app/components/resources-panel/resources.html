@@ -1,30 +1,49 @@
 
 <div class="ResourcesPanel">
 
-    <div class="list-header u-full-width">
-        <span id="resource-panel-title">
-            <h4> {{ title }} </h4>
+    <div class="list-header u-full-width" v-el:header>
+        <span id="resource-panel-title" class="panel-title">
+            <input
+                v-el:search
+                class="action-bar-search pull-right"
+                type="text"
+                v-if="state == states.SEARCH"
+                transition="expand-horizontal-fade"
+                v-model="search_query"
+                placeholder="search"
+                @keyup.esc="search_query ? search_query = '' : state = states.NORMAL">
+            <span class="action-container search-action pull-right">
+                <i  id="resource-panel-search-button"
+                    class="action-bar-button fa fa-search fa-fw"
+                    v-if="state != states.INSERT"
+                    transition="fade"
+                    @click="search_button_clicked()"></i>
+            </span>
+
+            <h4 class="title-text" v-if="state != states.SEARCH" transition="expand-horizontal-fade"> {{ title }} </h4>
         </span>
-        <span class="action-bar pull-right no-select">
-            <i  id="resource-panel-search-button"
-                class="action-bar-button fa fa-search fa-fw"
-                v-if="!display_insert"
-                transition="fade"></i>
+        <span class="action-bar no-select pull-right">
+            <span class="action-container">
+                <i  id="resource-panel-filter-button"
+                    class="action-bar-button fa fa-filter fa-fw"
+                    v-if="state != states.INSERT"
+                    transition="fade"></i>
+            </span>
 
-            <i  id="resource-panel-filter-button"
-                class="action-bar-button fa fa-filter fa-fw"
-                v-if="!display_insert"
-                transition="fade"></i>
+            <span class="action-container">
+                <i  id="resource-panel-sort-button"
+                    :class="['action-bar-button', 'fa', 'fa-fw', sort_order == 1 ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc']"
+                    v-if="state != states.INSERT"
+                    transition="fade"
+                    @click="sort_order *= -1"></i>
+            </span>
 
-            <i  id="resource-panel-sort-button"
-                class="action-bar-button fa fa-sort-alpha-desc fa-fw"
-                v-if="!display_insert"
-                transition="fade"></i>
-
-            <i  id="resource-panel-plus-button"
-                class="action-bar-button fa fa-plus fa-fw"
-                @click="toggle_insert()"
-                :class="{'rotate-45-enter': display_insert}"></i>
+            <span class="action-container">
+                <i  id="resource-panel-plus-button"
+                    class="action-bar-button fa fa-plus fa-fw rotate-45"
+                    @click="plus_button_clicked()"
+                    :class="{'rotate-45-enter': state != states.NORMAL}"></i>
+            </span>
         </span>
     </div>
     <div id="resources-panel-list" class="list-body u-full-width">
@@ -46,8 +65,8 @@
         </ul>
 
 
-        <div v-if="display_insert" transition="shade"></div>
-        <div v-if="display_insert" transition="drop-down">
+        <div v-if="state == states.INSERT" transition="shade"></div>
+        <div v-if="state == states.INSERT" transition="drop-down">
             <insert-resource-panel
                 :calendar="calendar"
                 v-on:completed="handle_insert_completion"></insert-resource-panel>
