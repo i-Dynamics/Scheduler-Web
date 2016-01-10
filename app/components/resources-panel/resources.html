@@ -1,5 +1,5 @@
 
-<div class="ResourcesPanel">
+<div class="ResourcesPanel" v-el:panel>
 
     <div class="list-header u-full-width" v-el:header>
         <span id="resource-panel-title" class="panel-title">
@@ -46,7 +46,7 @@
             </span>
         </span>
     </div>
-    <div id="resources-panel-list" class="list-body u-full-width">
+    <div id="resources-panel-list" class="list-body u-full-width" v-el:list>
         <ul>
             <li v-for="resource in display_resources"
                 class="resource-item no-select"

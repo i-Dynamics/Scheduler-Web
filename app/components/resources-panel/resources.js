@@ -109,6 +109,14 @@ export default Vue.extend({
 
     },
     events: {
+        resize(size) {
+            let panel_height  = this.$els.panel.style.height,
+                header_height = this.$els.header.style.height,
+                list_height   = this.$els.list.style.height
 
+            this.$els.list.style.height = panel_height - header_height
+
+            return true
+        }
     }
 })
