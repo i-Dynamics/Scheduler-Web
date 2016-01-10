@@ -44,7 +44,7 @@
         <div id="Scheduler" class="Scheduler" :class="{ disconnected: !control._connected }" v-cloak>
             <!-- Using template not to insert a div that messes with routerview -->
             <template v-if="handshake_complete">
-                <login-panel v-if="!store.user"></login-panel>
+                <login-panel v-if="!store.user" transition="fade"></login-panel>
                 <router-view v-else :calendars="store.user.calendars"></router-view>
             </template>
         </div>
