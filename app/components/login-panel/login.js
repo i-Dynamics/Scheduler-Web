@@ -17,13 +17,17 @@ export default Vue.extend({
     },
     ready() {
         this.resize(this.$root.window_size())
+
+        Vue.nextTick(() => {
+            this.$els.username.focus()
+        })
     },
     methods: {
         resize(size) {
             // Make panel full height
             this.$els.panel.style.height = size.height + "px"
             // Pull loging down the page
-            this.$els.logo.style.paddingTop = size.height / 10 + "px" 
+            this.$els.logo.style.paddingTop = size.height / 10 + "px"
         },
         login() {
             this.pending_request = true
@@ -36,7 +40,7 @@ export default Vue.extend({
     },
     computed: {
     },
-    watch: {  
+    watch: {
     },
     events: {
         resize: 'resize'
