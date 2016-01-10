@@ -1,15 +1,15 @@
 <div class="SchedulerPanel container u-max-full-width">
-    <div class="row">
+    <div class="view-box">
 
         <!-- Calendar Panel -->
-        <div class="nine columns">
+        <div class="side-left">
             <div id="calendar-panel" v-el:calendar-panel>
                 <calendar-panel v-if="!selected_calendar._surrogate" :calendar="selected_calendar"></calendar-panel>
             </div>
         </div>
 
         <!-- Side Panel -->
-        <div class="three columns">
+        <div class="side-right">
 
             <!-- Events Panel -->
             <div id="events-panel" class="side-panel" v-el:events-panel>

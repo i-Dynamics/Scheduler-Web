@@ -1,2 +1,3 @@
-export const debug = true
-export const ws_url = 'ws://localhost:8888/v1/websocket'
+export const debug = false
+export const ws_url = 'wss://a2z-scheduler-dev.herokuapp.com/v1/websocket'
+
