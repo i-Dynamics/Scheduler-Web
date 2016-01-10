@@ -87,6 +87,12 @@ input[type="password"]:focus, textarea:focus, select:focus {
     border-bottom: 1px solid #D25858;
 }
 
+#Scheduler {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
 #Scheduler .required::after {
     position: absolute;
     top: 15px;
@@ -121,13 +127,6 @@ input[type="password"]:focus, textarea:focus, select:focus {
 #Scheduler
 .cursor-pointer {
     cursor: pointer;
-}
-
-#Scheduler
-.main {
-    position: absolute;
-    height: 100%;
-    width: 100%;
 }
 
 #Scheduler

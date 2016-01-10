@@ -2,13 +2,36 @@
     height: 100%;
 }
 
-.SchedulerPanel .row,
-.SchedulerPanel .column,
-.SchedulerPanel .columns {
+.SchedulerPanel
+.view-box {
+    position: relative;
     height: 100%;
 }
 
-.SchedulerPanel .side-panel {
+.SchedulerPanel
+.side-left, .side-right {
+    height: 100%;
+}
+
+.SchedulerPanel
+.side-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 330px;
+}
+
+.SchedulerPanel
+.side-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 330px;
+}
+
+.SchedulerPanel
+.side-panel {
     height: 50%;
 }
 
