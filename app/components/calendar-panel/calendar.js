@@ -2,7 +2,10 @@ import './calendar.css!'
 
 import tmpl from './calendar.html!text'
 
+import {debug} from 'consts'
+
 import Vue from 'vue'
+
 import moment from 'moment'
 import $ from 'jquery'
 import fullCalendar from 'fullcalendar'
@@ -42,7 +45,7 @@ export default Vue.extend({
         }
     },
     ready() {
-        window.calendar_panel = this;
+        if (debug) window.calendar_panel = this;
 
         this.$root.control.get_bookings(this.calendar)
 
