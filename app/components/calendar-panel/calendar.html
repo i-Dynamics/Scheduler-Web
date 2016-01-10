@@ -9,7 +9,7 @@
             <h4 class="calendar-title"> {{ display_title }} </h4>
 
             <i class="fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base"
-               @click="page()"></i>
+               @click="page('next')"></i>
         </span>
 
         <span class="settings pull-right no-select">
@@ -18,15 +18,15 @@
 
         <span class="view-options pull-right no-select">
             <i  class="fa fa-fw fa-th cursor-pointer transition-base"
-               :class="{'selected-view': 'month' == view.name}"
+               :class="{'selected-view': view_name == 'month' }"
                @click="change_view('month')"></i>
 
             <i  class="fa fa-fw fa-th-large cursor-pointer transition-base"
-               :class="{'selected-view': 'agendaWeek' == view.name}"
+               :class="{'selected-view': view_name == 'agendaWeek'}"
                @click="change_view('agendaWeek')"></i>
 
             <i  class="fa fa-fw fa-square cursor-pointer transition-base"
-               :class="{'selected-view': 'agendaDay' == view.name}"
+               :class="{'selected-view': view_name == 'agendaDay'}"
                @click="change_view('agendaDay')"></i>
         </span>
     </div>

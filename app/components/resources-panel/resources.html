@@ -49,18 +49,13 @@
     <div id="resources-panel-list" class="list-body u-full-width" v-el:list>
         <ul>
             <li v-for="resource in display_resources"
-                class="resource-item no-select"
+                class="list-item no-select"
                 :class="{'selected': selected_resources.indexOf(resource) != -1}"
                 draggable="true"
                 @click="select_resource(resource)" >
 
+                <span class="list-item-button pull-right" >Edit</span>
                 <span class="list-item-text"> {{ resource.name }} </span>
-                <span class="resource-button info-button pull-right" >
-                    <i class="fa fa-info fa-fw"></i>
-                </span>
-                <span class="resource-button edit-button pull-right" >
-                    <i class="fa fa-pencil fa-fw"></i>
-                </span>
             </li>
         </ul>
 

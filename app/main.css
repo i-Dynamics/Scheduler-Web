@@ -44,10 +44,10 @@ button.button-primary, a.button-primary, .button.button-primary, input[type="sub
     border-color: #D25858;
 
     -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+       -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+         -o-transition: 0.3s;
+            transition: 0.3s;
 }
 
 button.button-primary:hover, a.button-primary:hover, .button.button-primary:hover, input[type="submit"].button-primary:hover,
@@ -63,8 +63,8 @@ button.button-primary:disabled, a.button-primary:disabled, .button.button-primar
 
 button.button-primary:active, a.button-primary:active, .button.button-primary:active, input[type="submit"].button-primary:active {
     -webkit-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
-    -moz-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
-    box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+       -moz-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+            box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
 }
 
 input[type="email"], input[type="number"], input[type="search"],
@@ -117,11 +117,11 @@ input[type="password"]:focus, textarea:focus, select:focus {
 #Scheduler
 .no-select {
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
 }
 
 #Scheduler
@@ -167,6 +167,7 @@ ul li {
     background-color: white;
     padding: 8px 16px;
     margin: 0;
+    white-space: nowrap;
 }
 
 #Scheduler
@@ -190,16 +191,53 @@ ul li span {
     margin-bottom: -7px;
 }
 
-
 #Scheduler
-.list-body
+.list-body li
 .list-item-text {
     display: inline-block;
 
-    max-width: 90%;
+    max-width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+#Scheduler
+.list-body li:hover
+.list-item-text {
+    max-width: 85%;
+}
+
+#Scheduler
+.list-body li
+.list-item-button {
+    position: relative;
+    top: -8px;
+    right: -16px;
+
+    display: none;
+    padding: 9px 10px;
+    margin: 0px;
+
+    font-size: 16px;
+    line-height: 25px;
+
+    color: #D25858;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#Scheduler
+.list-body li:hover
+.list-item-button {
+    display: block;
+}
+
+#Scheduler
+.list-body li:hover
+.list-item-button:hover {
+    color: #FFF;
+    background-color: #D25858; /*#6a3535;*/
 }
 
 

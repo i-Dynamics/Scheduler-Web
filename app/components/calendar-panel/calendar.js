@@ -18,9 +18,10 @@ export default Vue.extend({
     ],
     data() {
         return {
-            'element': null,
-            'view': {},
             'rendered': false,
+            'element': null,
+            'title': "Loading...",
+            'view_name': 'month',
             'options': {
                 header: false,
                 minTime: '06:00:00',
@@ -43,26 +44,30 @@ export default Vue.extend({
         }
     },
     ready() {
-        window.calendar_panel = this;
-
         this.$root.control.get_bookings(this.calendar)
 
         this.element = $('#calendar')
         this.element.fullCalendar(this.options)
 
-        this.view = this.element.fullCalendar('getView')
+        this.update_title()
 
         Vue.nextTick( this.resize_calendar )
 
-        this.rendered = true;
+        this.rendered = true
     },
     methods: {
         page(direction='next') {
             this.element.fullCalendar(direction)
+            this.update_title()
         },
         change_view(view_name) {
             this.element.fullCalendar('changeView', view_name)
-            this.view = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
+            this.view_name = view_name;
+            this.update_title()
+        },
+        update_title() {
+            let view   = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
+            this.title = view.title
         },
         resize_calendar() {
             let calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight - 1 // take 1px off to resolve rounding error
@@ -71,8 +76,7 @@ export default Vue.extend({
     },
     computed: {
         display_title() {
-            let title = (this.view.title ? this.view.title : "Loading");
-            return title.replace('—', '-');
+            return this.rendered ? this.title.replace('—', '-') : "Loading..." // replace long dash with short one
         },
         grouped_bookings() {
             // Takes bookings that only differ on resource and groups them into a single entity
