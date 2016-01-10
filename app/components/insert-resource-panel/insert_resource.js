@@ -22,6 +22,7 @@ export default Vue.extend({
         }
     },
     ready() {
+        this.$els.name.focus()
     },
     methods: {
         insert_resource(resource) {
