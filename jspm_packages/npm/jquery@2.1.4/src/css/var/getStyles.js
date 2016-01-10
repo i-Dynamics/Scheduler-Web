@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format global";
 define(function() {
 	return function( elem ) {
 		// Support: IE<=11+, Firefox<=30+ (#15098, #14150)

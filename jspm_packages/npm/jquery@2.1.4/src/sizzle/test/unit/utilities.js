@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 module("utilities", { teardown: moduleTeardown });
 
 function testAttr( doc ) {

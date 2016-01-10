@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format global";
 define([
 	"./core",
 	"./data/var/data_priv",

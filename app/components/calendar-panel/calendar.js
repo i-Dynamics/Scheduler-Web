@@ -5,7 +5,6 @@ import tmpl from './calendar.html!text'
 import Vue from 'vue'
 import moment from 'moment'
 import $ from 'jquery'
-import jQueryUI from 'jquery-ui'
 import fullCalendar from 'fullcalendar'
 
 
@@ -19,6 +18,8 @@ export default Vue.extend({
     ],
     data() {
         return {
+            'element': null,
+            'view': {},
             'options': {
                 header: false,
                 minTime: '06:00:00',
@@ -27,7 +28,7 @@ export default Vue.extend({
                 weekends: false,
                 timeFormat: 'hh:mm a',
                 allDayText: '',
-                defaultView: 'agendaWeek',
+                defaultView: 'month',
                 businessHours: false,
                 slotLabelFormat: 'h a',
                 slotEventOverlap: false,
@@ -42,12 +43,28 @@ export default Vue.extend({
     },
     ready() {
         this.$root.control.get_bookings(this.calendar)
-        // this.$els.calendar.fullCalendar(this.options)
+
+        this.element = $('#calendar')
+        this.element.fullCalendar(this.options)
+
+        this.view = this.element.fullCalendar('getView')
+
+        // TODO: sizing
     },
     methods: {
-
+        page(direction='next') {
+            this.element.fullCalendar(direction)
+        },
+        change_view(view_name) {
+            this.element.fullCalendar('changeView', view_name)
+            this.view = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
+        },
     },
     computed: {
+        display_title() {
+            let title = (this.view.title ? this.view.title : "Loading");
+            return title.replace('—', '-');
+        },
         grouped_bookings() {
             // Takes bookings that only differ on resource and groups them into a single entity
             var groups   = new Map()
@@ -66,12 +83,12 @@ export default Vue.extend({
                 })
             }
             return Array.from( groups.values() )
-        }
+        },
     },
     watch: {
 
     },
     events: {
-        
+
     }
 })

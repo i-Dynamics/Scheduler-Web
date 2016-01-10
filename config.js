@@ -15,14 +15,13 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
-    "clean-css": "npm:clean-css@3.4.8",
+    "clean-css": "npm:clean-css@3.4.9",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "fullcalendar": "npm:fullcalendar@2.5.0",
-    "jquery": "github:components/jquery@2.1.4",
-    "jquery-ui": "npm:jquery-ui@1.10.5",
-    "moment": "npm:moment@2.10.6",
+    "jquery": "npm:jquery@2.1.4",
+    "moment": "npm:moment@2.11.0",
     "skeleton": "github:dhg/Skeleton@2.0.4",
     "skeleton-css": "npm:skeleton-css@2.0.4",
     "text": "github:systemjs/plugin-text@0.0.3",
@@ -94,7 +93,7 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:clean-css@3.4.8": {
+    "npm:clean-css@3.4.9": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -141,8 +140,7 @@ System.config({
     },
     "npm:fullcalendar@2.5.0": {
       "jquery": "npm:jquery@2.1.4",
-      "moment": "npm:moment@2.10.6",
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "moment": "npm:moment@2.11.0"
     },
     "npm:graceful-readlink@1.0.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
@@ -153,12 +151,6 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:jquery-ui@1.10.5": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2"
-    },
-    "npm:jquery@2.1.4": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:jstransform@10.1.0": {
       "base62": "npm:base62@0.1.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -167,7 +159,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "source-map": "npm:source-map@0.1.31"
     },
-    "npm:moment@2.10.6": {
+    "npm:moment@2.11.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {

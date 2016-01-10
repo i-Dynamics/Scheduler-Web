@@ -1,13 +1,15 @@
 <!-- TemplateName -->
-<div class="CalendarPanel">
+<div class="CalendarPanel" v-el:panel>
     <!-- Content -->
-    <div id="calendar-panel-title" class="list-header calendar-header u-full-width" v-if="calendar">
+    <div id="calendar-panel-title" class="list-header calendar-header u-full-width" v-if="calendar" v-el:title-bar>
         <span class="navigation">
-            <i class="fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base"
-               ></i>
-            <h4 class="calendar-title"> {{ calendar.name }} </h4>
+            <i  class="fa fa-fw fa-caret-left no-select cursor-pointer title-caret transition-base"
+               @click="page('prev')"></i>
+
+            <h4 class="calendar-title"> {{ display_title }} </h4>
+
             <i class="fa fa-fw fa-caret-right no-select cursor-pointer title-caret transition-base"
-               ></i>
+               @click="page()"></i>
         </span>
 
         <span class="settings pull-right no-select">
@@ -15,10 +17,17 @@
         </span>
 
         <span class="view-options pull-right no-select">
-            <i class="fa fa-fw fa-th cursor-pointer transition-base"
-               ></i>
-            <i class="fa fa-fw fa-th-large cursor-pointer transition-base"></i>
-            <i class="fa fa-fw fa-square cursor-pointer transition-base"></i>
+            <i  class="fa fa-fw fa-th cursor-pointer transition-base"
+               :class="{'selected-view': 'month' == view.name}"
+               @click="change_view('month')"></i>
+
+            <i  class="fa fa-fw fa-th-large cursor-pointer transition-base"
+               :class="{'selected-view': 'agendaWeek' == view.name}"
+               @click="change_view('agendaWeek')"></i>
+
+            <i  class="fa fa-fw fa-square cursor-pointer transition-base"
+               :class="{'selected-view': 'agendaDay' == view.name}"
+               @click="change_view('agendaDay')"></i>
         </span>
     </div>
     <div id="calendar" v-el:calendar></div>

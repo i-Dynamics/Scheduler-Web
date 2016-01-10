@@ -7,6 +7,9 @@ import './main.css!'
 // -- Consts
 import {debug, ws_url} from 'consts'
 
+// -- Prototype Extentions
+import 'app/utils/array_hipster'
+
 // -- Vue
 import Vue         from 'vue'
 import VueRouter   from 'vue-router'
@@ -51,7 +54,7 @@ router.start({
     },
     created() {
         this.control   = new Control(this, ws_url)
-        this.keys_down = new Set()
+        this.keys_down = []
     },
     ready() {
         if (debug) {
@@ -71,12 +74,12 @@ router.start({
         },
         key_down(event) {
             event = event || window.event
-            this.keys_down.add(event.keyCode)
-            console.log(event.keyCode)
+            this.keys_down.set(event.keyCode)
+            console.log(this.keys_down)
         },
         key_up(event) {
             event = event || window.event
-            this.keys_down.delete(event.keyCode)
+            this.keys_down.remove(event.keyCode)
         }
     },
     computed: {

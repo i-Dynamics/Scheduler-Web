@@ -1,7 +1,7 @@
 
-<div class="EventsPanel">
+<div class="EventsPanel" v-el:panel>
 
-    <div class="list-header u-full-width">
+    <div class="list-header u-full-width" v-el:header>
         <span id="event-panel-title" class="panel-title">
             <input
                 v-el:search
@@ -46,7 +46,7 @@
             </span>
         </span>
     </div>
-    <div id="events-panel-list" class="list-body u-full-width">
+    <div id="events-panel-list" class="list-body u-full-width" v-el:list>
         <ul>
             <li v-for="event in calendar.events | filterBy search_query in 'name' 'notes' | orderBy 'name' sort_order"
                 class="event-item no-select"

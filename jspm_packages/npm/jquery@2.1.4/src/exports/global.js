@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format global";
 define([
 	"../core",
 	"../var/strundefined"

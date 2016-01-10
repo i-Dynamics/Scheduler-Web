@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format global";
 /*!
  * FullCalendar v2.5.0 Google Calendar Plugin
  * Docs & License: http://fullcalendar.io/

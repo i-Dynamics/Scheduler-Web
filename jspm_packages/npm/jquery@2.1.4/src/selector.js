@@ -1,3 +1,3 @@
 /* */ 
-"format cjs";
+"format global";
 define([ "./selector-sizzle" ]);

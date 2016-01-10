@@ -29,6 +29,9 @@ export default Vue.extend({
     },
     methods: {
         resize(size) {
+            // main panel
+            this.$els.calendarPanel.style.height  = size.height + "px"
+            // side panels
             let half_height                       = size.height / 2
             this.$els.eventsPanel.style.height    = half_height + "px"
             this.$els.resourcesPanel.style.height = half_height + "px"
@@ -44,6 +47,14 @@ export default Vue.extend({
 
     },
     events: {
-        resize: 'resize'
+        resize(size) {
+            // main panel
+            this.$els.calendarPanel.style.height  = size.height + "px"
+            // side panels
+            let half_height                       = size.height / 2
+            this.$els.eventsPanel.style.height    = half_height + "px"
+            this.$els.resourcesPanel.style.height = half_height + "px"
+            return true
+        }
     }
 })

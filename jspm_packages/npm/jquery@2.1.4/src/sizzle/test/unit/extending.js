@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 module("extending", { teardown: moduleTeardown });
 
 test("custom pseudos", function() {

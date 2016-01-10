@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 var fireNative,
 	jQuery = this.jQuery || "jQuery", // For testing .noConflict()
 	$ = this.$ || "$",

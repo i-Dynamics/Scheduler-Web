@@ -9,3 +9,6 @@ TODO:
         show on the calendar current calendar view
     - Keep surrogates in sync. e.g. when getting booking.resource try: store.user.cal.resources.find(id==id) else return surrogate
         if resource is deleted from all resources the server should emit update_booking to keep any bookings with references to that resource in sync
+    - Public calendars. Calendar in the db holds a foreign key to permission called public_role (or default_role) which when you check if user has role you use that if they have none.
+        Also add a role permission of 'approved' to a booking and a role between view and collaborator to describe this role. Users with roles should also have this role added to their current roles
+        API should handle it as approve_booking(id) and it should be on booking as booking._approved so it can't be updated via update. Maybe update_booking should call approve_booking if 'approved' key exists. So approve_booking can handle the logic of who can approve

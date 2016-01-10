@@ -55,6 +55,17 @@ export default Vue.extend({
     computed: {
     },
     events: {
+        resize(size) {
+            // let panel_height  = getComputedStyle(this.$els.panel).height,
+            //     header_height = getComputedStyle(this.$els.header).height,
+            //     list_height   = getComputedStyle(this.$els.list).height
+            //
+            // this.$els.list.style.height = panel_height - header_height
+            // console.log(this.$els.list.style.height)
+            return true
+        }
+    },
+    watch: {
 
     }
 })

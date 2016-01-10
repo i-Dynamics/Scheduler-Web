@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 module("selector", { teardown: moduleTeardown });
 
 // #### NOTE: ####

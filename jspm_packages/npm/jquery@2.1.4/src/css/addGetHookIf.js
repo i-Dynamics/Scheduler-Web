@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format global";
 define(function() {
 
 function addGetHookIf( conditionFn, hookFn ) {
