@@ -8,7 +8,8 @@
                 class="u-full-width"
                 type="text"
                 placeholder="name"
-                v-model="resource.name">
+                v-model="resource.name"
+                @keyup.esc="resource.name ? resource.name = '' : $emit('completed')">
         </div>
         <input
                 id="insert-resource-submit"

@@ -65,7 +65,7 @@ export default Vue.extend({
             this.view = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
         },
         resize_calendar() {
-            let calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight
+            let calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight - 1 // take 1px off to resolve rounding error
             this.element.fullCalendar( 'option', 'height', calendar_height )
         }
     },

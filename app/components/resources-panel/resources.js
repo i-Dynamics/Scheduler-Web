@@ -40,7 +40,7 @@ export default Vue.extend({
         resize_list() {
             let panel_height  = this.$els.panel.offsetHeight,
                 header_height = this.$els.header.offsetHeight,
-                list_height   = panel_height - header_height
+                list_height   = panel_height - header_height - 1 // take 1px off to resolve rounding error
 
             this.$els.list.style.height = list_height+"px"
         },
