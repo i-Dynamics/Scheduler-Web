@@ -3,12 +3,12 @@
     <head>
         <!-- title -->
         <title>Scheduler</title>
-        
+
         <!-- metas -->
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        
+
         <!-- favicon -->
         <link rel="icon" type="image/png" href="/images/a2zcloud.ico"/>
 
@@ -42,8 +42,11 @@
 
         <!-- Scheduler App -->
         <div id="Scheduler" class="Scheduler" :class="{ disconnected: !control._connected }" v-cloak>
-            <login-panel v-if="!store.user"></login-panel>
-            <router-view v-else :calendars="store.user.calendars"></router-view>
+            <!-- Using template not to insert a div that messes with routerview -->
+            <template v-if="handshake_complete">
+                <login-panel v-if="!store.user" transition="fade"></login-panel>
+                <router-view v-else :calendars="store.user.calendars"></router-view>
+            </template>
         </div>
 
         <!-- include system to load packages, parse config and import the app entry point -->

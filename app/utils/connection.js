@@ -6,12 +6,13 @@ export default class Connection {
     constructor(app, url){
         this._url = url;
         this._app = app;
-        this._ws = null;
+        this._ws  = null;
         this._next_id = 1;
-        this._pending_request = [];
+        this._pending_request  = [];
         this._pending_response = {};
         this._send_timeout = null;
         this._connected = false;
+        this._handshake_complete = false;
         this.connect();
 
         // ping to keep connection alive
@@ -29,7 +30,7 @@ export default class Connection {
         };
         this._ws.onmessage = evt => {
             var payload = JSON.parse(evt.data);
-            if(payload.response_id){
+            if(payload.response_id) {
                 var request = this._pending_response[payload.response_id];
                 if(request){
                     delete this._pending_response[payload.response_id];
@@ -37,16 +38,19 @@ export default class Connection {
                 }
             } else if(payload.signal == "cookie") {
                 var value = docCookies.getItem(payload.message.cookie_name);
-                if(value){
+                if (value) {
                     this.send("cookie",{value: value});
+                } else {
+                    this._handshake_complete = true
                 }
             } else if(payload.signal == "user") {
                 this._app.$emit('insert_user', payload.message)
-                if(payload.cookie){
+                if(payload.cookie) {
                     var expires = new Date();
                     expires.setMonth( expires.getMonth() + 1 );
                     docCookies.setItem(payload.cookie_name, payload.cookie,expires.toGMTString());
                 }
+                this._handshake_complete = true
             } else {
                 this._app.$emit(payload.signal, payload.message);
             }

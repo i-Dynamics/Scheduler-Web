@@ -2,7 +2,7 @@
 <div class="InsertResourcePanel">
     <!-- Content -->
     <form class="main-form">
-        <div id="insert-resource-panel-name-required" class="required">
+        <div id="insert-resource-panel-name-required" :class="{'required': !event.name}">
             <input
                 id="insert-resource-panel-name"
                 class="u-full-width"
@@ -16,6 +16,8 @@
                 class="button-primary u-full-width"
                 type="submit"
                 value="Create"
+                v-bind:disabled="!valid_event"
+                @keyup.enter.prevent="insert_resource(resource)"
                 @click="insert_resource(resource)">
     </form>
 </div>

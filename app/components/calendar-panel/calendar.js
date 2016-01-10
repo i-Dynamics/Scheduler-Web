@@ -2,7 +2,10 @@ import './calendar.css!'
 
 import tmpl from './calendar.html!text'
 
+import {debug} from 'consts'
+
 import Vue from 'vue'
+
 import moment from 'moment'
 import $ from 'jquery'
 import fullCalendar from 'fullcalendar'
@@ -44,13 +47,14 @@ export default Vue.extend({
         }
     },
     ready() {
+        if (debug) window.calendar_panel = this;
+
         this.$root.control.get_bookings(this.calendar)
 
         this.element = $('#calendar')
         this.element.fullCalendar(this.options)
 
         this.update_title()
-
         Vue.nextTick( this.resize_calendar )
 
         this.rendered = true

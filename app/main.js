@@ -83,6 +83,10 @@ router.start({
         }
     },
     computed: {
+        // Monitors when the handshake between the server and client end (cookie for user exchange)
+        handshake_complete() {
+            return this.control._handshake_complete
+        }
     },
     events: {
         resize(size) {

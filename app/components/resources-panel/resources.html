@@ -52,6 +52,8 @@
                 class="list-item no-select"
                 :class="{'selected': selected_resources.indexOf(resource) != -1}"
                 draggable="true"
+                v-on:dragstart="drag_start(resource)"
+                v-on:dragend="selected_resources.empty()"
                 @click="select_resource(resource)" >
 
                 <span class="list-item-button pull-right" >Edit</span>
