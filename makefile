@@ -12,6 +12,6 @@ build:
 	mkdir -p built/jspm_packages/npm/font-awesome@4.5.0/fonts
 	cp -r jspm_packages/npm/font-awesome@4.5.0/fonts/* built/jspm_packages/npm/font-awesome@4.5.0/fonts/
 	- rm consts.js
-	echo "export const debug = true\nexport const ws_url = 'ws://localhost:8889/v1/websocket'\n" > consts.js
+	echo "export const debug = true\nexport const ws_url = 'ws://localhost:8888/v1/websocket'\n" > consts.js
 # deploy:
 # 	scp -r -i ~/.ssh/i-Dynamics/idynamics-aws.pem built/* root@54.171.121.214:/var/www/scheduler/
