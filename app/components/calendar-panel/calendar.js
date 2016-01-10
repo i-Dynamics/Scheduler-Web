@@ -20,7 +20,6 @@ export default Vue.extend({
         return {
             'element': null,
             'view': {},
-            'rendered': false,
             'options': {
                 header: false,
                 minTime: '06:00:00',
@@ -53,8 +52,6 @@ export default Vue.extend({
         this.view = this.element.fullCalendar('getView')
 
         Vue.nextTick( this.resize_calendar )
-
-        this.rendered = true;
     },
     methods: {
         page(direction='next') {
