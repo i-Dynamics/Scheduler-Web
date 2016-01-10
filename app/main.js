@@ -75,7 +75,6 @@ router.start({
         key_down(event) {
             event = event || window.event
             this.keys_down.set(event.keyCode)
-            console.log(this.keys_down)
         },
         key_up(event) {
             event = event || window.event
