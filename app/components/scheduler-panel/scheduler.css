@@ -8,8 +8,9 @@
     height: 100%;
 }
 
-.SchedulerPanel
-.side-left, .side-right {
+.SchedulerPanel .main-panel,
+.SchedulerPanel .side-left, 
+.SchedulerPanel .side-right {
     height: 100%;
 }
 
@@ -33,6 +34,11 @@
 .SchedulerPanel
 .side-panel {
     height: 50%;
+}
+
+.SchedulerPanel
+.main-panel {
+
 }
 
 #resource-panel {

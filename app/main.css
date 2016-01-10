@@ -171,8 +171,8 @@ ul li {
 
 #Scheduler
 .list-body ul li.selected {
-    background-color: #FFF3F2;
     font-weight: bold;
+    border-left: 3px solid #D25858;
 }
 
 #Scheduler

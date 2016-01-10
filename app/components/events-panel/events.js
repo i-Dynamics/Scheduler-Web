@@ -30,8 +30,17 @@ export default Vue.extend({
     },
     ready() {
         this.$root.control.get_events(this.calendar)
+
+        Vue.nextTick( this.resize_list )
     },
     methods: {
+        resize_list() {
+            let panel_height  = this.$els.panel.offsetHeight,
+                header_height = this.$els.header.offsetHeight,
+                list_height   = panel_height - header_height
+
+            this.$els.list.style.height = list_height+"px"
+        },
         handle_insert_completion() {
             this.state = this.states.NORMAL
         },
@@ -56,12 +65,7 @@ export default Vue.extend({
     },
     events: {
         resize(size) {
-            let panel_height  = this.$els.panel.style.height,
-                header_height = this.$els.header.style.height,
-                list_height   = this.$els.list.style.height
-
-            this.$els.list.style.height = panel_height - header_height
-
+            this.resize_list()
             return true
         }
     },

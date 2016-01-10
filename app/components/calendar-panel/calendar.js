@@ -20,6 +20,7 @@ export default Vue.extend({
         return {
             'element': null,
             'view': {},
+            'rendered': false,
             'options': {
                 header: false,
                 minTime: '06:00:00',
@@ -42,6 +43,8 @@ export default Vue.extend({
         }
     },
     ready() {
+        window.calendar_panel = this;
+
         this.$root.control.get_bookings(this.calendar)
 
         this.element = $('#calendar')
@@ -49,7 +52,9 @@ export default Vue.extend({
 
         this.view = this.element.fullCalendar('getView')
 
-        // TODO: sizing
+        Vue.nextTick( this.resize_calendar )
+
+        this.rendered = true;
     },
     methods: {
         page(direction='next') {
@@ -59,6 +64,10 @@ export default Vue.extend({
             this.element.fullCalendar('changeView', view_name)
             this.view = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
         },
+        resize_calendar() {
+            let calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight
+            this.element.fullCalendar( 'option', 'height', calendar_height )
+        }
     },
     computed: {
         display_title() {
@@ -86,9 +95,11 @@ export default Vue.extend({
         },
     },
     watch: {
-
     },
     events: {
-
+        resize(size) {
+            this.resize_calendar()
+            return true
+        }
     }
 })
