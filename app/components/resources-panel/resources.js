@@ -8,6 +8,45 @@ import InsertResourcePanel from 'app/components/insert-resource-panel/insert_res
 import * as systems from 'app/utils/operating_systems'
 import {key_codes} from 'app/utils/key_codes'
 
+function expand_list_item(list, element, speed) {
+    // check if the list needs to scroll
+    if(list.scrollTop == element.offsetTop) return
+
+    // calculate distance and magnitude
+    // for the rate invert the sign for scroll direction and multiply by speed
+    var distance   = list.scrollTop - element.offsetTop,
+        magnitude  = Math.abs(distance),
+        rate       = (distance/magnitude) * -(speed),
+        last_value = magnitude
+
+    // log values
+    // console.log("element offset:" + element.offsetTop);
+    // console.log("    scroll top:" + list.scrollTop);
+    // console.log("     magnitude:" + magnitude);
+    // console.log("      distance:" + distance);
+    // console.log("         speed:" + speed);
+    // console.log("          rate:" + rate);
+
+    // animate to scroll position at given rate
+    var interval = setInterval(animate, 10)
+    function animate() {
+        // console.log("run:" + magnitude);
+        // check if the limit has been reached
+        if(magnitude > last_value || magnitude == 0) {
+            list.scrollTop = element.offsetTop
+            // console.log("RESULT:" + list.scrollTop)
+            clearInterval(interval)
+        }
+        else {
+            // increment the scroll distance
+            list.scrollTop += rate
+            // save the last value and update the magnitude
+            last_value = magnitude
+            magnitude  = Math.abs(list.scrollTop - element.offsetTop)
+        }
+    }
+}
+
 
 export default Vue.extend({
     template: tmpl,
@@ -24,19 +63,42 @@ export default Vue.extend({
             states: {
                 NORMAL: 0,
                 INSERT: 1,
-                SEARCH: 2
+                SEARCH: 2,
+                EDITOR: 3
             },
             search_query: null,
             sort_order: 1,
-            selected_resources: []
+            selected_resources: [],
+            editing_resource: null
         }
     },
     ready() {
         this.$root.control.get_resources(this.calendar)
-
         Vue.nextTick( this.resize_list )
     },
     methods: {
+        edit_resource(index, resource, event) {
+            // get the, list, element
+            var list    = this.$els.listContainer,
+                element = event.path[1]
+
+            // get the list and item heights
+            var list_height = list.offsetHeight,
+                item_height = element.offsetHeight,
+                speed       = Math.ceil(list_height/item_height)
+
+            // hide the scroll bar
+            list.style.overflow = 'hidden'
+
+            // set the editing resource
+            this.state = this.states.EDITOR
+            this.editing_resource = resource
+
+            // wait to expand the item and scroll
+            setTimeout(function () {
+                expand_list_item(list, element, speed)
+            }, 10)
+        },
         resize_list() {
             let panel_height  = this.$els.panel.offsetHeight,
                 header_height = this.$els.header.offsetHeight,
@@ -50,10 +112,13 @@ export default Vue.extend({
         plus_button_clicked() {
             if (this.state == this.states.NORMAL) {
                 this.state = this.states.INSERT
-            } else if (this.state == this.states.SEARCH) {
-                this.search_query = ''
-                this.state = this.states.NORMAL
             } else {
+                if (this.state == this.states.SEARCH) {
+                    this.search_query = ''
+                } else if (this.state == this.states.EDITOR) {
+                    this.editing_resource = null
+                    this.$els.listContainer.style.overflow = 'auto'
+                }
                 this.state = this.states.NORMAL
             }
         },
@@ -70,7 +135,10 @@ export default Vue.extend({
                 this.selected_resources.set(resource)
             }
         },
-        select_resource(resource, resources) {
+        select_resource(resource, resources, event) {
+            // check if edit mode is active
+            if(this.editing_resource) return
+
             // TODO: what if resource is removed by server. needto add watcher to listen for that event here and remove obj from selected
             let osx_client = (this.$root.user_os == systems.operating_systems.OSX),
                 keys_down  = this.$root.keys_down,

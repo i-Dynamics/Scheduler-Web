@@ -162,29 +162,30 @@ ul {
 
 #Scheduler
 .list-body
-ul li {
+li {
     border-bottom: 1px solid #F1F1F1;
     background-color: white;
     padding: 8px 16px;
     margin: 0;
     white-space: nowrap;
+    height: 26px;
 }
 
 #Scheduler
-.list-body ul li.selected {
+.list-body li.selected {
     font-weight: bold;
     border-left: 3px solid #D25858;
 }
 
 #Scheduler
 .list-body
-ul li:hover {
+li:hover {
     background-color: #FFF3F2;
 }
 
 #Scheduler
 .list-body
-ul li span {
+li span {
     font-size: 16px;
 
     /* Should be (font size / 2) - 1 for vertical alignment */
@@ -236,6 +237,7 @@ ul li span {
 #Scheduler
 .list-body li:hover
 .list-item-button:hover {
+    transition: all .4s ease;
     color: #FFF;
     background-color: #D25858; /*#6a3535;*/
 }

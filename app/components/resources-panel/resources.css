@@ -68,26 +68,73 @@ input.action-bar-search {
     line-height: 32px;
 }
 
-
+.ResourcesPanel
 .action-bar-search::-webkit-input-placeholder {
     color: white !important;
     opacity: 0.7;
 }
 
-
+.ResourcesPanel
 .action-bar-search:-moz-placeholder { /* Firefox 18- */
     color: white !important;
     opacity: 0.7;
 }
 
-
+.ResourcesPanel
 .action-bar-search::-moz-placeholder {  /* Firefox 19+ */
     color: white !important;
     opacity: 0.7;
 }
 
-
+.ResourcesPanel
 .action-bar-search:-ms-input-placeholder {
     color: white !important;
     opacity: 0.7;
+}
+
+#Scheduler
+.ResourcesPanel
+.list-body
+.list-container {
+    height: 100%;
+    background: transparent;
+    overflow: auto;
+}
+
+#Scheduler
+.ResourcesPanel
+.list-body ul.list-container,
+.list-body ul.list-container li {
+    transition: height .3s ease;
+}
+
+#Scheduler
+.ResourcesPanel
+.list-body ul.list-container
+li.editing {
+    height: 100%;
+    box-sizing: border-box;
+    border: 0px;
+    font-weight: normal;
+    padding: 0px;
+}
+
+#Scheduler
+.ResourcesPanel
+.list-container
+.editing:hover {
+    background: #FFF;
+}
+
+#Scheduler
+.ResourcesPanel
+.list-container
+.editing .expand-item {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    /* TODO: MOVE TO PANEL CSS */
+    padding: 8px 16px;
+    box-sizing: border-box;
 }

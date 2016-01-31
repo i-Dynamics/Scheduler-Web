@@ -15,7 +15,7 @@
             <span class="action-container search-action pull-right">
                 <i  id="resource-panel-search-button"
                     class="action-bar-button fa fa-search fa-fw"
-                    v-if="state != states.INSERT"
+                    v-if="state != states.INSERT && state != states.EDITOR"
                     transition="fade"
                     @click="search_button_clicked()"></i>
             </span>
@@ -26,14 +26,14 @@
             <span class="action-container">
                 <i  id="resource-panel-filter-button"
                     class="action-bar-button fa fa-filter fa-fw"
-                    v-if="state != states.INSERT"
+                    v-if="state != states.INSERT && state != states.EDITOR"
                     transition="fade"></i>
             </span>
 
             <span class="action-container">
                 <i  id="resource-panel-sort-button"
                     :class="['action-bar-button', 'fa', 'fa-fw', sort_order == 1 ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc']"
-                    v-if="state != states.INSERT"
+                    v-if="state != states.INSERT && state != states.EDITOR"
                     transition="fade"
                     @click="sort_order *= -1"></i>
             </span>
@@ -47,17 +47,26 @@
         </span>
     </div>
     <div id="resources-panel-list" class="list-body u-full-width" v-el:list>
-        <ul>
+        <ul class="list-container" v-el:list-container>
             <li v-for="resource in display_resources"
                 class="list-item no-select"
-                :class="{'selected': selected_resources.indexOf(resource) != -1}"
+                :class="{'selected': selected_resources.indexOf(resource) != -1, 'editing': resource == editing_resource}"
                 draggable="true"
                 v-on:dragstart="drag_start(resource)"
                 v-on:dragend="selected_resources.empty()"
-                @click="select_resource(resource)" >
+                @click.stop="select_resource(resource, null, $event)">
 
-                <span class="list-item-button pull-right" >Edit</span>
-                <span class="list-item-text"> {{ resource.name }} </span>
+                <div class="list-item-button pull-right"
+                      v-if="resource != editing_resource"
+                      @click.stop="edit_resource($index, resource, $event)">Edit</div>
+
+                <span class="list-item-text"
+                      v-if="resource != editing_resource"> {{ resource.name }} </span>
+
+                <div class="expand-item"
+                     v-if="resource == editing_resource">
+                    <div>Add panel 'ere</div>
+                </div>
             </li>
         </ul>
 
