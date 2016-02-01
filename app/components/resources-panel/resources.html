@@ -27,7 +27,8 @@
                 <i  id="resource-panel-filter-button"
                     class="action-bar-button fa fa-filter fa-fw"
                     v-if="state != states.INSERT && state != states.EDITOR"
-                    transition="fade"></i>
+                    transition="fade"
+                    @click="filter_button_clicked()"></i>
             </span>
 
             <span class="action-container">
@@ -46,7 +47,14 @@
             </span>
         </span>
     </div>
-    <div id="resources-panel-list" class="list-body u-full-width" v-el:list>
+    <div id="resource-panel-list" class="list-body u-full-width" v-el:list>
+        <div class="action-sub-bar"
+             :class="{'expanded':action_sub_bar_active}"
+             v-el:sub-bar>
+             <div class="sub-bar-contents" v-if="action_sub_bar_active">
+                 Add panel here...
+             </div>
+        </div>
         <ul class="list-container" v-el:list-container>
             <li v-for="resource in display_resources"
                 class="list-item no-select"
@@ -58,14 +66,14 @@
 
                 <div class="list-item-button pull-right"
                       v-if="resource != editing_resource"
-                      @click.stop="edit_resource($index, resource, $event)">Edit</div>
+                      @click.stop="edit_button_clicked($index, resource, $event)">Edit</div>
 
                 <span class="list-item-text"
                       v-if="resource != editing_resource"> {{ resource.name }} </span>
 
                 <div class="expand-item"
                      v-if="resource == editing_resource">
-                    <div>Add panel 'ere</div>
+                    <div>Add panel here...</div>
                 </div>
             </li>
         </ul>

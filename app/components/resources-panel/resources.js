@@ -69,7 +69,8 @@ export default Vue.extend({
             search_query: null,
             sort_order: 1,
             selected_resources: [],
-            editing_resource: null
+            editing_resource: null,
+            filtering: false
         }
     },
     ready() {
@@ -77,11 +78,17 @@ export default Vue.extend({
         Vue.nextTick( this.resize_list )
     },
     methods: {
-        edit_resource(index, resource, event) {
-            // get the, list, element
-            var list    = this.$els.listContainer,
-                element = event.path[1]
+        resize_list() {
+            // get constituent heights
+            let panel_height   = this.$els.panel.offsetHeight,
+                header_height  = this.$els.header.offsetHeight
 
+            // calculate the lists height
+            // take 1px off to resolve rounding error
+            let list_height = panel_height - header_height - 1
+            this.$els.list.style.height = list_height+"px"
+        },
+        edit_resource(resource, list, element) {
             // get the list and item heights
             var list_height = list.offsetHeight,
                 item_height = element.offsetHeight,
@@ -95,19 +102,25 @@ export default Vue.extend({
             this.editing_resource = resource
 
             // wait to expand the item and scroll
-            setTimeout(function () {
-                expand_list_item(list, element, speed)
-            }, 10)
-        },
-        resize_list() {
-            let panel_height  = this.$els.panel.offsetHeight,
-                header_height = this.$els.header.offsetHeight,
-                list_height   = panel_height - header_height - 1 // take 1px off to resolve rounding error
-
-            this.$els.list.style.height = list_height+"px"
+            this.$nextTick(expand_list_item.bind(this, list, element, speed))
         },
         handle_insert_completion() {
             this.state = this.states.NORMAL
+        },
+        edit_button_clicked(index, resource, event) {
+            // get the, list, element
+            var list    = this.$els.listContainer,
+                element = event.path[1]
+
+            // check if the sub bar is open
+            if(this.filtering) {
+                // close menu and wait for animation
+                this.filter_button_clicked()
+                setTimeout(this.edit_resource.bind(this,resource,list,element), 300)
+            }
+            else {
+                this.edit_resource(resource,list,element)
+            }
         },
         plus_button_clicked() {
             if (this.state == this.states.NORMAL) {
@@ -121,6 +134,15 @@ export default Vue.extend({
                 }
                 this.state = this.states.NORMAL
             }
+        },
+        filter_button_clicked() {
+            // toggle filtering
+            this.filtering = !this.filtering
+
+            // resize the list container to account for filter bar
+            let list_height = this.$els.list.offsetHeight,
+                bar_height  = this.filtering ? 45 : 0
+            this.$els.listContainer.style.height = list_height - bar_height + "px"
         },
         search_button_clicked() {
             this.state = this.states.SEARCH
@@ -187,6 +209,9 @@ export default Vue.extend({
             result = order_by(result, 'name', this.sort_order)
 
             return result
+        },
+        action_sub_bar_active() {
+            return this.filtering
         }
     },
     watch: {
