@@ -51,7 +51,9 @@
         <div class="action-sub-bar"
              :class="{'expanded':action_sub_bar_active}"
              v-el:sub-bar>
-             <div class="sub-bar-contents" v-if="action_sub_bar_active">
+             <div class="sub-bar-contents"
+                  v-if="action_sub_bar_active"
+                  transition="fade">
                  Add panel here...
              </div>
         </div>
@@ -69,10 +71,13 @@
                       @click.stop="edit_button_clicked($index, resource, $event)">Edit</div>
 
                 <span class="list-item-text"
-                      v-if="resource != editing_resource"> {{ resource.name }} </span>
+                      v-if="resource != editing_resource">
+                    {{ resource.name }}
+                </span>
 
                 <div class="expand-item"
-                     v-if="resource == editing_resource">
+                     v-if="resource == editing_resource"
+                     transition="fade">
                     <div>Add panel here...</div>
                 </div>
             </li>
