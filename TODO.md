@@ -8,5 +8,5 @@
 - [ ] Service home page for visitors that are not logged in.
 - [x] External images.
 - [x] Add Normalize CDN.
-- [ ] Add constants file to JS root.
-- [ ] Get control from server.
+- [x] Add constants file to JS root.
+- [x] Get control from server.
