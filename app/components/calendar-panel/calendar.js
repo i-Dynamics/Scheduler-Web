@@ -17,7 +17,7 @@ export default Vue.extend({
 
     },
     props: [
-        'calendar'
+        'calendar',
     ],
     data() {
         return {
@@ -37,46 +37,50 @@ export default Vue.extend({
                 businessHours: false,
                 slotLabelFormat: 'h a',
                 slotEventOverlap: false,
+                viewRendered: this.test,
                 views: {
                     week: {
                         titleFormat: 'D MMM YYYY',
-                        columnFormat: 'dddd Do'
-                    }
-                }
-            }
+                        columnFormat: 'dddd Do',
+                    },
+                },
+            },
         }
     },
     ready() {
-        if (debug) window.calendar_panel = this;
+        if (debug) window.calendar_panel = this
 
-        this.$root.control.get_bookings(this.calendar)
+        this.control.get_bookings(this.calendar)
 
         this.element = $('#calendar')
         this.element.fullCalendar(this.options)
 
         this.update_title()
-        Vue.nextTick( this.resize_calendar )
+        Vue.nextTick(this.resize_calendar)
 
         this.rendered = true
     },
     methods: {
+        test() {
+            console.log("view rendered. update title")
+        },
         page(direction='next') {
             this.element.fullCalendar(direction)
             this.update_title()
         },
         change_view(view_name) {
             this.element.fullCalendar('changeView', view_name)
-            this.view_name = view_name;
+            this.view_name = view_name
             this.update_title()
         },
         update_title() {
-            let view   = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
+            const view = this.element.fullCalendar('getView') // TODO: view properties not reactive (e.g. changing month, title stops udating)
             this.title = view.title
         },
         resize_calendar() {
-            let calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight - 1 // take 1px off to resolve rounding error
-            this.element.fullCalendar( 'option', 'height', calendar_height )
-        }
+            const calendar_height = this.$els.panel.offsetHeight - this.$els.header.offsetHeight - 1 // take 1px off to resolve rounding error
+            this.element.fullCalendar('option', 'height', calendar_height)
+        },
     },
     computed: {
         display_title() {
@@ -84,22 +88,22 @@ export default Vue.extend({
         },
         grouped_bookings() {
             // Takes bookings that only differ on resource and groups them into a single entity
-            var groups   = new Map()
-            for(let b of this.calendar.bookings) {
-                let key   = b.start_date + '-' + b.end_date + '-' + b.event.id
-                let group = groups.has(key) ? groups.get(key) : groups.set(key, {
+            const groups = new Map()
+            for(const b of this.calendar.bookings) {
+                const key   = b.start_date + '-' + b.end_date + '-' + b.event.id
+                const group = groups.has(key) ? groups.get(key) : groups.set(key, {
                     start_date: b.start_date,
                     end_date: b.end_date,
                     event: b.event,
-                    bookings: []
+                    bookings: [],
                 }).get(key)
 
                 group.bookings.push({
                     id: b.id,
-                    resource: b.resource
+                    resource: b.resource,
                 })
             }
-            return Array.from( groups.values() )
+            return Array.from(groups.values())
         },
     },
     watch: {
@@ -108,6 +112,6 @@ export default Vue.extend({
         resize(size) {
             this.resize_calendar()
             return true
-        }
-    }
+        },
+    },
 })

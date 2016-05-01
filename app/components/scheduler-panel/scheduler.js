@@ -22,7 +22,7 @@ export default Vue.extend({
         return {}
     },
     ready() {
-        this.$root.control.get_calendars()
+        this.control.get_calendars()
     },
     route: {
     },

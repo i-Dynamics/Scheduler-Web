@@ -33,7 +33,7 @@ export default Vue.extend({
             this.pending_request = true
             this.error_message   = null
 
-            this.$root.control.login(this.username, this.password, error_message => {
+            this.control.login(this.username, this.password, error_message => {
                 this.error_message = error_message
             })
         }

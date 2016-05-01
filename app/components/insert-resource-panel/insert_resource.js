@@ -27,7 +27,7 @@ export default Vue.extend({
     methods: {
         insert_resource(resource) {
             resource.calendar_id = this.calendar.id
-            this.$root.control.insert_resource(resource, error => {
+            this.control.insert_resource(resource, error => {
                 if (!error) this.$emit('completed')
             })
         }

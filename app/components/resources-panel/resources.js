@@ -73,7 +73,7 @@ export default Vue.extend({
         }
     },
     ready() {
-        this.$root.control.get_resources(this.calendar)
+        this.control.get_resources(this.calendar)
         Vue.nextTick( this.resize_list )
     },
     methods: {

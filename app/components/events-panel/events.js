@@ -29,7 +29,7 @@ export default Vue.extend({
         }
     },
     ready() {
-        this.$root.control.get_events(this.calendar)
+        this.control.get_events(this.calendar)
 
         Vue.nextTick( this.resize_list )
     },

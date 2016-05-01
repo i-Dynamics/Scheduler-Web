@@ -30,7 +30,7 @@ export default Vue.extend({
     methods: {
         insert_event(event) {
             event.calendar_id = this.calendar.id
-            this.$root.control.insert_event(event, error => {
+            this.control.insert_event(event, error => {
                 if (!error) this.$emit('completed')
             })
         }

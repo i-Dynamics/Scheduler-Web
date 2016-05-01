@@ -26927,7 +26927,7 @@ $__System.register('7d', ['12', '70', '74', '75', '76', '78', '6d', 'b', '7a', '
                 ready: function ready() {
                     if (debug) window.calendar_panel = this;
 
-                    this.$root.control.get_bookings(this.calendar);
+                    this.control.get_bookings(this.calendar);
 
                     this.element = $('#calendar');
                     this.element.fullCalendar(this.options);
@@ -27069,7 +27069,7 @@ $__System.register('82', ['12', '80', '81'], function (_export) {
                         var _this = this;
 
                         event.calendar_id = this.calendar.id;
-                        this.$root.control.insert_event(event, function (error) {
+                        this.control.insert_event(event, function (error) {
                             if (!error) _this.$emit('completed');
                         });
                     }
@@ -27117,7 +27117,7 @@ $__System.register('83', ['12', '82', '7e', '7f'], function (_export) {
                     };
                 },
                 ready: function ready() {
-                    this.$root.control.get_events(this.calendar);
+                    this.control.get_events(this.calendar);
 
                     Vue.nextTick(this.resize_list);
                 },
@@ -27214,7 +27214,7 @@ $__System.register('88', ['12', '86', '87'], function (_export) {
                         var _this = this;
 
                         resource.calendar_id = this.calendar.id;
-                        this.$root.control.insert_resource(resource, function (error) {
+                        this.control.insert_resource(resource, function (error) {
                             if (!error) _this.$emit('completed');
                         });
                     }
@@ -27320,7 +27320,7 @@ $__System.register('8b', ['12', '84', '85', '88', '89', '8a'], function (_export
                     };
                 },
                 ready: function ready() {
-                    this.$root.control.get_resources(this.calendar);
+                    this.control.get_resources(this.calendar);
 
                     Vue.nextTick(this.resize_list);
                 },
@@ -27448,7 +27448,7 @@ $__System.register('8c', ['12', '43', '44', '83', '7d', '8b'], function (_export
                     return {};
                 },
                 ready: function ready() {
-                    this.$root.control.get_calendars();
+                    this.control.get_calendars();
                 },
                 route: {},
                 methods: {},
@@ -27519,7 +27519,7 @@ $__System.register('8f', ['12', '8d', '8e'], function (_export) {
                         this.pending_request = true;
                         this.error_message = null;
 
-                        this.$root.control.login(this.username, this.password, function (error_message) {
+                        this.control.login(this.username, this.password, function (error_message) {
                             _this2.error_message = error_message;
                         });
                     }

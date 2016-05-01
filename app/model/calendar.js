@@ -14,7 +14,7 @@ export default class Calendar extends Uniquable
         contributors = [],
         viewers      = [],
         invites      = [],
-        _surrogate   = true
+        _surrogate   = true,
     }) {
         super(_surrogate)
 
