@@ -7,3 +7,11 @@
 
 jspm_package
 node_modules
+
+jspm_packages/npm/babel-runtime@5.8.34/.jspm-hash
+
+jspm_packages/npm/babel-runtime@5.8.34/.jspm.errors
+
+jspm_packages/npm/moment@2.11.0/.jspm-hash
+
+jspm_packages/npm/readable-stream@1.1.13/.jspm-hash
