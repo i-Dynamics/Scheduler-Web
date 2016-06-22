@@ -1,1 +1,0 @@
-module.exports = require("github:dhg/Skeleton@2.0.4/css/skeleton.css!");
