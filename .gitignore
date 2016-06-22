@@ -5,5 +5,7 @@
 
 .atomignore
 
-jspm_package
+jspm_packages
 node_modules
+
+npm-debug.log
